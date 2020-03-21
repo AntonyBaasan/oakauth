@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{52
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Service.Memory", "src\User.Service.Memory\User.Service.Memory.csproj", "{EA2076B5-439C-4152-9212-7D7A07C2CEEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthorizationServer", "src\AuthorizationServer\AuthorizationServer.csproj", "{F8918A79-6905-42FC-8067-7F94BDEB228F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{EA2076B5-439C-4152-9212-7D7A07C2CEEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA2076B5-439C-4152-9212-7D7A07C2CEEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA2076B5-439C-4152-9212-7D7A07C2CEEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8918A79-6905-42FC-8067-7F94BDEB228F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8918A79-6905-42FC-8067-7F94BDEB228F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8918A79-6905-42FC-8067-7F94BDEB228F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8918A79-6905-42FC-8067-7F94BDEB228F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
