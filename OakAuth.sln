@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Interfaces", "src\User.Interfaces\User.Interfaces.csproj", "{711F10B6-7963-467D-B644-9BB159E55164}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User.Interfaces", "src\User.Interfaces\User.Interfaces.csproj", "{711F10B6-7963-467D-B644-9BB159E55164}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{520C1C0C-4A14-4293-9A10-52F41DEDBE72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Service.Memory", "src\User.Service.Memory\User.Service.Memory.csproj", "{EA2076B5-439C-4152-9212-7D7A07C2CEEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User.Service.Memory", "src\User.Service.Memory\User.Service.Memory.csproj", "{EA2076B5-439C-4152-9212-7D7A07C2CEEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthorizationServer", "src\AuthorizationServer\AuthorizationServer.csproj", "{F8918A79-6905-42FC-8067-7F94BDEB228F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthorizationServer", "src\AuthorizationServer\AuthorizationServer.csproj", "{F8918A79-6905-42FC-8067-7F94BDEB228F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "src\Web\Web.csproj", "{86C199AA-775F-452D-A197-C183AB9C8A66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,15 +31,19 @@ Global
 		{F8918A79-6905-42FC-8067-7F94BDEB228F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8918A79-6905-42FC-8067-7F94BDEB228F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8918A79-6905-42FC-8067-7F94BDEB228F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86C199AA-775F-452D-A197-C183AB9C8A66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86C199AA-775F-452D-A197-C183AB9C8A66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86C199AA-775F-452D-A197-C183AB9C8A66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86C199AA-775F-452D-A197-C183AB9C8A66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7C123C26-10AC-47EA-B943-4B87C607E025}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{711F10B6-7963-467D-B644-9BB159E55164} = {520C1C0C-4A14-4293-9A10-52F41DEDBE72}
 		{EA2076B5-439C-4152-9212-7D7A07C2CEEB} = {520C1C0C-4A14-4293-9A10-52F41DEDBE72}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7C123C26-10AC-47EA-B943-4B87C607E025}
 	EndGlobalSection
 EndGlobal
