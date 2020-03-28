@@ -34,6 +34,7 @@ namespace Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCors();
             }
             else
             {
@@ -68,6 +69,7 @@ namespace Web
                 if (env.IsDevelopment())
                 {
                     spa.UseAngularCliServer(npmScript: "start");
+                    //spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
                 }
             });
         }
