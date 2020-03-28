@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{52
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User.Service.Memory", "src\User.Service.Memory\User.Service.Memory.csproj", "{EA2076B5-439C-4152-9212-7D7A07C2CEEB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthorizationServer", "src\AuthorizationServer\AuthorizationServer.csproj", "{F8918A79-6905-42FC-8067-7F94BDEB228F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "src\Web\Web.csproj", "{86C199AA-775F-452D-A197-C183AB9C8A66}"
 EndProject
 Global
@@ -27,10 +25,6 @@ Global
 		{EA2076B5-439C-4152-9212-7D7A07C2CEEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA2076B5-439C-4152-9212-7D7A07C2CEEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA2076B5-439C-4152-9212-7D7A07C2CEEB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F8918A79-6905-42FC-8067-7F94BDEB228F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F8918A79-6905-42FC-8067-7F94BDEB228F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F8918A79-6905-42FC-8067-7F94BDEB228F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F8918A79-6905-42FC-8067-7F94BDEB228F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{86C199AA-775F-452D-A197-C183AB9C8A66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{86C199AA-775F-452D-A197-C183AB9C8A66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86C199AA-775F-452D-A197-C183AB9C8A66}.Release|Any CPU.ActiveCfg = Release|Any CPU
