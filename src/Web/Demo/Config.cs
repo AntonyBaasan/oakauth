@@ -8,7 +8,7 @@ namespace Web.Demo
         public static IEnumerable<ApiResource> Api =>
             new List<ApiResource>
             {
-                new ApiResource("api2", "Test Api")
+                new ApiResource("api1", "Test Api")
             };
 
         public static IEnumerable<Client> Clients =>
@@ -19,7 +19,7 @@ namespace Web.Demo
                     ClientId = "client",
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     ClientSecrets = { new Secret("secret".Sha256()) },
-                    AllowedScopes = { "api2" }
+                    AllowedScopes = { "api1" }
                 }
             };
 
