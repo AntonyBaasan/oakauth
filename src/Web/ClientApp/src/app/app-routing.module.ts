@@ -19,6 +19,13 @@ const appRoutes: Routes = [
         (m) => m.FetchDataModule
       ),
   },
+  {
+    path: 'applications',
+    loadChildren: () =>
+      import('./pages/applications/applications.module').then(
+        (m) => m.ApplicationsModule
+      ),
+  },
 ];
 
 @NgModule({
