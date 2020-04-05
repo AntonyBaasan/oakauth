@@ -1,0 +1,33 @@
+import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
+
+const appRoutes: Routes = [
+  {
+    path: '',
+    loadChildren: () =>
+      import('./pages/home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: 'counter',
+    loadChildren: () =>
+      import('./pages/counter/counter.module').then((m) => m.CounterModule),
+  },
+  {
+    path: 'fetch-data',
+    loadChildren: () =>
+      import('./pages/fetch-data/fetch-data.module').then(
+        (m) => m.FetchDataModule
+      ),
+  },
+];
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
+  ],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}
