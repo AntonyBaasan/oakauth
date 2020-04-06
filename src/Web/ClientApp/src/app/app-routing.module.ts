@@ -26,6 +26,13 @@ const appRoutes: Routes = [
         (m) => m.ApplicationsModule
       ),
   },
+  {
+    path: 'apis',
+    loadChildren: () =>
+      import('./pages/apis/apis.module').then(
+        (m) => m.ApisModule
+      ),
+  },
 ];
 
 @NgModule({
