@@ -23,22 +23,19 @@ steps:
 
 - task: NuGetToolInstaller@1
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
-
-
-
 - task: DotNetCoreCLI@2
+  displayName: 'build'
   inputs:
     command: 'build'
     configuration: '$(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
+  displayName: 'test'
   inputs:
     command: 'test'
 
 - task: DotNetCoreCLI@2
+  displayName: 'publish'
   inputs:
     command: publish
     publishWebProjects: True
@@ -46,6 +43,7 @@ steps:
     zipAfterPublish: True
 
 - task: AzureWebApp@1
+  displayName: 'deploay to AzureWebApp oakauth'
   inputs:
     azureSubscription: 'Free Trial(eb67c5b1-4c4b-4f3f-a123-73e2fcd0470e)'
     appType: 'webAppLinux'
