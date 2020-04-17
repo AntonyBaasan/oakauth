@@ -31,7 +31,7 @@ steps:
   inputs:
     command: publish 
     publishWebProjects: True
-    arguments: './src/Web/Web.csproj --configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    arguments: 'src/Web/Web.csproj --configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
 
 - task: AzureWebApp@1
