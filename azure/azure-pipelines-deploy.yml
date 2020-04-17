@@ -8,7 +8,6 @@ trigger:
     include:
       - deploy
 
-
 pool:
   vmImage: 'ubuntu-latest'
 
