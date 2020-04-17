@@ -12,7 +12,7 @@ trigger:
       - src/Web/ClientApp
 
 pool:
-  vmImage: 'ubuntu-16.04'
+  vmImage: 'ubuntu-latest'
 
 variables:
   solution: '**/*.sln'
