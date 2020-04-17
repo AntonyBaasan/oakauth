@@ -26,13 +26,13 @@ steps:
   inputs:
     script: 'npm install'
     workingDirectory: 'src/Web/ClientApp'
-    failOnStderr: true
+
 - task: CmdLine@2
   displayName: npm build
   inputs:
     script: 'npm build'
     workingDirectory: 'src/Web/ClientApp'
-    failOnStderr: true
+
 
 # - script: |
 #     cd src/Web/ClientApp
