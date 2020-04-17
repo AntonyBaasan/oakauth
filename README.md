@@ -1,5 +1,5 @@
 # OakAuth
-Simple monolithic authorization server.
+Simple monolithic authorization server. [Demo](https://oakauth.azurewebsites.net/)
 
 ## Build
 OakAuth.Dotnet: [![Build Status](https://antonybaasan.visualstudio.com/OakAuth/_apis/build/status/OakAuth.Dotnet?branchName=master)](https://antonybaasan.visualstudio.com/OakAuth/_build/latest?definitionId=2&branchName=master)
