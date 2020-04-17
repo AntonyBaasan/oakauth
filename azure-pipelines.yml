@@ -5,7 +5,8 @@
 
 trigger:
   branches:
-    - master
+    include:
+      - master
   paths:
     exclude:
       - src/Web/ClientApp
