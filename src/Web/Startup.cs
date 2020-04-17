@@ -27,7 +27,7 @@ namespace Web
             builder.AddDeveloperSigningCredential();
 
             services.AddControllersWithViews();
-            // In production, the Angular files will be served from this directory
+            // In production
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
