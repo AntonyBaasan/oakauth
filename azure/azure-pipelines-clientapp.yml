@@ -21,8 +21,21 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- script: |
-    cd src/Web/ClientApp
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+- task: CmdLine@2
+  displayName: npm install
+  inputs:
+    script: 'npm install'
+    workingDirectory: 'src/Web/ClientApp'
+    failOnStderr: true
+- task: CmdLine@2
+  displayName: npm build
+  inputs:
+    script: 'npm build'
+    workingDirectory: 'src/Web/ClientApp'
+    failOnStderr: true
+
+# - script: |
+#     cd src/Web/ClientApp
+#     npm install
+#     npm run build
+#   displayName: 'npm install and build'
