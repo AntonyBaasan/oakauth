@@ -29,7 +29,7 @@ steps:
 - task: CmdLine@2
   displayName: npm lint
   inputs:
-    script: 'npm lint'
+    script: 'npm run lint'
     workingDirectory: 'src/Web/ClientApp'
 - task: CmdLine@2
   displayName: npm build
