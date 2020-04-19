@@ -21,14 +21,16 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-
-
 - task: CmdLine@2
   displayName: npm install
   inputs:
     script: 'npm install'
     workingDirectory: 'src/Web/ClientApp'
-
+- task: CmdLine@2
+  displayName: npm lint
+  inputs:
+    script: 'npm lint'
+    workingDirectory: 'src/Web/ClientApp'
 - task: CmdLine@2
   displayName: npm build
   inputs:
