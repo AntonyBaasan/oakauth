@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Application } from './models/Application';
+import { ApplicationsService } from './services/applications.service';
 
 @Component({
   selector: 'app-applications-component',
-  templateUrl: './applications.component.html'
+  templateUrl: './applications.component.html',
 })
 export class ApplicationsComponent {
-  public currentCount = 0;
+  applications$: Observable<Array<Application>>;
 
-  public incrementCounter() {
-    this.currentCount++;
+  constructor(private applicationsService: ApplicationsService) {
+    this.applications$ = applicationsService.getApplications();
   }
 }
