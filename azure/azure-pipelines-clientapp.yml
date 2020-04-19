@@ -36,4 +36,8 @@ steps:
   inputs:
     script: 'npm build'
     workingDirectory: 'src/Web/ClientApp'
-
+- task: CmdLine@2
+  displayName: npm test
+  inputs:
+    script: 'npm run test-headless'
+    workingDirectory: 'src/Web/ClientApp'
