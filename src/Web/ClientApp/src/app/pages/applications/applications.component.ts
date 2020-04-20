@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Application } from './models/Application';
 import { ApplicationsService } from './services/applications.service';
@@ -7,10 +7,11 @@ import { ApplicationsService } from './services/applications.service';
   selector: 'app-applications-component',
   templateUrl: './applications.component.html',
 })
-export class ApplicationsComponent {
+export class ApplicationsComponent implements OnInit {
   applications$: Observable<Array<Application>>;
 
-  constructor(private applicationsService: ApplicationsService) {
+  constructor(applicationsService: ApplicationsService) {
     this.applications$ = applicationsService.getApplications();
   }
+  ngOnInit(): void {}
 }
