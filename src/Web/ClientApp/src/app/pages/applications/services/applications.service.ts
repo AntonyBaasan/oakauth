@@ -10,8 +10,8 @@ export class ApplicationsService {
 
   getApplications(): Observable<Array<Application>> {
     return of([
-      { id: '1dsaf1231', name: 'Test1' },
-      { id: '2xcfdsfad', name: 'Test2' },
+      { clientId: '1dsaf1231', name: 'Test1' },
+      { clientId: '2xcfdsfad', name: 'Test2' },
     ]);
   }
 }

@@ -2,21 +2,24 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">id</th>
+      <th scope="col">Client ID</th>
       <th scope="col">Name</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of items; let i = index">
       <th scope="row">{{i}}</th>
-      <th>{{item.id}}</th>
+      <th>{{item.clientId}}</th>
       <th>{{item.name}}</th>
       <th>
-        <span data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-          <button type="button" class="btn btn-outline-secondary">
-            <i-feather name="hexagon"></i-feather>
-          </button>
-        </span>
+        <button type="button" class="btn btn-outline-secondary" placement="top" ngbPopover="Quickstart"
+          triggers="mouseenter:mouseleave">
+          <i-feather name="book"></i-feather>
+        </button>
+        <button type="button" class="btn btn-outline-secondary" placement="top" ngbPopover="Settings"
+          triggers="mouseenter:mouseleave">
+          <i-feather name="settings"></i-feather>
+        </button>
       </th>
     </tr>
   </tbody>

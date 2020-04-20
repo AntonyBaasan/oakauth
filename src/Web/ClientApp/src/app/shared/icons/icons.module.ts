@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
 import { FeatherModule } from 'angular-feather';
-import { Globe, Hexagon, Layers } from 'angular-feather/icons';
+import { Globe, Hexagon, Layers, Settings, Book } from 'angular-feather/icons';
 
 const icons: any = {
   Globe,
   Hexagon,
   Layers,
+  Settings,
+  Book,
 };
 
 @NgModule({
-  imports: [
-    FeatherModule.pick(icons)
-  ],
-  exports: [
-    FeatherModule
-  ]
+  imports: [FeatherModule.pick(icons)],
+  exports: [FeatherModule],
 })
-export class IconsModule { }
+export class IconsModule {}
