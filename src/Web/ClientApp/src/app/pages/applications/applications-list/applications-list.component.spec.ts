@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ApplicationsListComponent } from './applications-list.component';
+import { IconsModule } from 'src/app/shared/icons/icons.module';
 
 describe('ApplicationsListComponent', () => {
   let component: ApplicationsListComponent;
@@ -8,9 +9,9 @@ describe('ApplicationsListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ApplicationsListComponent ]
-    })
-    .compileComponents();
+      declarations: [ApplicationsListComponent],
+      imports: [IconsModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
