@@ -1,3 +1,6 @@
+using Applications.Interfaces;
+using Applications.Memory;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -20,6 +23,9 @@ namespace Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(this.GetType().Assembly);
+            services.AddSingleton<IApplicationsService, ApplicatonsService>();
+
             var builder = services.AddIdentityServer()
                 .AddInMemoryApiResources(Config.Api)
                 .AddInMemoryClients(Config.Clients);
