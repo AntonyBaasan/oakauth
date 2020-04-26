@@ -28,7 +28,8 @@ namespace Web
 
             var builder = services.AddIdentityServer()
                 .AddInMemoryApiResources(Config.Api)
-                .AddInMemoryClients(Config.Clients);
+                .AddInMemoryClients(Config.Clients)
+		        .AddInMemoryIdentityResources(Config.GetResources());
 
             builder.AddDeveloperSigningCredential();
 
