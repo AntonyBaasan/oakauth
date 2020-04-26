@@ -1,6 +1,7 @@
 ﻿using IdentityServer4.Models;
 using System.Collections.Generic;
 using IdentityModel;
+using IdentityServer4;
 
 namespace Web.Demo
 {
@@ -59,7 +60,7 @@ namespace Web.Demo
                     ClientSecrets = { new Secret("secret".Sha256()) },
                     AllowedScopes = { "api1" }
                 },
-                // browser based client JavaScript app
+                // browser based client JavaScript app (implicit flow)
                 new Client
                 {
                     ClientId = "js.client",
@@ -69,7 +70,37 @@ namespace Web.Demo
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
 
-                    AllowedScopes = { "api1" }
+                    RedirectUris =           { "http://localhost:7017/index.html" },
+                    PostLogoutRedirectUris = { "http://localhost:7017/index.html" },
+                    AllowedCorsOrigins =     { "http://localhost:7017" },
+
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                        "api1", "api2.read_only"
+                    }
+                },
+                new Client
+                {
+                    ClientId = "mvc",
+                    ClientName  = "MVC client",
+                    ClientUri  = "https://clienturl.com",
+
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    AllowAccessTokensViaBrowser = true,
+                    ClientSecrets = { new Secret("password".Sha256()) },
+
+                    RedirectUris =           { "http://localhost:7017/index.html" },
+                    PostLogoutRedirectUris = { "http://localhost:7017/index.html" },
+                    AllowedCorsOrigins =     { "http://localhost:7017" },
+
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                        "api1", "api2.read_only"
+                    }
                 }
             };
 
