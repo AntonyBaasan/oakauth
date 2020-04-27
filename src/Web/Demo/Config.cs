@@ -23,7 +23,8 @@ namespace Web.Demo
                 oakauthProfile
             };
         }
-        public static IEnumerable<ApiResource> Api =>
+
+        public static IEnumerable<ApiResource> Apis =>
             new List<ApiResource>
             {
                 new ApiResource("api1", "Test Api"),
