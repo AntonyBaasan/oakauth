@@ -20,9 +20,19 @@ namespace Applications.Memory
 
         public Task<List<Client>> GetApplicationsAsync()
         {
-            return Task.FromResult(is4Context.Clients
-                    .Include(c => c.ClientSecrets)
-                    .Select(c => c.ToModel()).ToList());
+            return Task.FromResult(
+                is4Context.Clients
+                .Select(c => c.ToModel())
+                .ToList()
+            );
+        }
+
+        public Task<Client> GetApplicationsByIdAsync(string clientId)
+        {
+            var client = is4Context.Clients
+                .Where(c => c.ClientId.Equals(clientId))
+                .FirstOrDefault();
+            return Task.FromResult(client.ToModel());
         }
     }
 }

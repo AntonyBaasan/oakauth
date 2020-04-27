@@ -7,5 +7,6 @@ namespace Applications.Interfaces
     public interface IApplicationsService
     {
         Task<List<Client>> GetApplicationsAsync();
+        Task<Client> GetApplicationsByIdAsync(string clientId);
     }
 }

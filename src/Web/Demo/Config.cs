@@ -48,23 +48,29 @@ namespace Web.Demo
             {
                 new Client
                 {
-                    ClientId = "client",
+                    ClientId = "xsaddfdasdfe4w111",
+                    ClientName = "client",
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    ClientSecrets = { new Secret("secret".Sha256()) },
+                    ClientSecrets = {
+                        new Secret("secret".Sha256(), "Client's secret")
+                    },
                     AllowedScopes = { "api1" }
                 },
                 // server to server
                 new Client
                 {
-                    ClientId = "service.client",
+                    ClientId = "xsaddfdasdfe4w222",
+                    ClientName = "service.client",
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    ClientSecrets = { new Secret("secret".Sha256()) },
+                    ClientSecrets = {
+                        new Secret("secret".Sha256()),
+                    },
                     AllowedScopes = { "api1" }
                 },
                 // browser based client JavaScript app (implicit flow)
                 new Client
                 {
-                    ClientId = "js.client",
+                    ClientId = "xsaddfdasdfe4w333",
                     ClientName  = "JavaScript client",
                     ClientUri  = "https://clienturl.com",
 
@@ -84,8 +90,8 @@ namespace Web.Demo
                 },
                 new Client
                 {
-                    ClientId = "mvc",
                     ClientName  = "MVC client",
+                    ClientId = "mvc",
                     ClientUri  = "https://clienturl.com",
 
                     AllowedGrantTypes = GrantTypes.Hybrid,

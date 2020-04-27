@@ -21,10 +21,19 @@ namespace Web.Controllers
             this.mapper = mapper;
         }
 
-        public async Task<List<Application>> GetAll() {
+        public async Task<List<Application>> GetAll()
+        {
             var clients = await applicationsService.GetApplicationsAsync();
             List<Application> applications = mapper.Map<List<Client>, List<Application>>(clients);
             return applications;
+        }
+
+        [HttpGet("{clientId}")]
+        public async Task<Application> GetById(string clientId)
+        {
+            var client = await applicationsService.GetApplicationsByIdAsync(clientId);
+            var application = mapper.Map<Client, Application>(client);
+            return application;
         }
     }
 }

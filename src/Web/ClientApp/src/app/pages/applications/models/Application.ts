@@ -1,4 +1,5 @@
 export class Application {
   clientId: string;
-  name: string;
+  clientName: string;
+  clientDescription: string;
 }
