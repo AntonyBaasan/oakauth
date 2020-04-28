@@ -39,7 +39,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Applications.Interfaces\Applications.Interfaces.csproj" />
-    <ProjectReference Include="..\Applications.Memory\Applications.Memory.csproj" />
+    <ProjectReference Include="..\Applications.Sqlite\Applications.Sqlite.csproj" />
     <ProjectReference Include="..\User.Interfaces\User.Interfaces.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>

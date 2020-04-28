@@ -21,6 +21,14 @@ namespace Web.Controllers
             this.mapper = mapper;
         }
 
+        [HttpPost]
+        public async Task<Application> Create() 
+        {
+            var client = await applicationsService.CreateApplicationAsync(new Client { ClientName = "some client"});
+            var application = mapper.Map<Client, Application>(client);
+            return application;
+        }
+
         public async Task<List<Application>> GetAll()
         {
             var clients = await applicationsService.GetApplicationsAsync();

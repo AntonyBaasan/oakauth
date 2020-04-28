@@ -1,5 +1,5 @@
 using Applications.Interfaces;
-using Applications.Memory;
+using Applications.Sqlite;
 using AutoMapper;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
