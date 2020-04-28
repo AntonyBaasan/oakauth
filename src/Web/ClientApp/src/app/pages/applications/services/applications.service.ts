@@ -7,16 +7,10 @@ import { Application } from '../models/Application';
   providedIn: 'root',
 })
 export class ApplicationsService {
-  private backendUrl = '/api/applications'
+  private backendUrl = '/api/applications';
 
   constructor(private http: HttpClient) { }
 
-  //getApplications(): Observable<Array<Application>> {
-  //  return of([
-  //    { clientId: '1dsaf1231', name: 'Test1' },
-  //    { clientId: '2xcfdsfad', name: 'Test2' },
-  //  ]);
-  //}
   getApplications(): Observable<Array<Application>> {
     return this.http.get<Array<Application>>(this.backendUrl);
   }
