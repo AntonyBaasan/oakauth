@@ -1,5 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Application } from '../models/Application';
+import { Observable } from 'rxjs';
+import { ApplicationsService } from '../services/applications.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-applications-list',
@@ -7,9 +10,12 @@ import { Application } from '../models/Application';
   styleUrls: ['./applications-list.component.css'],
 })
 export class ApplicationsListComponent implements OnInit {
-  @Input() items: Array<Application> = [];
 
-  constructor() {}
+  applications$: Observable<Array<Application>>;
 
-  ngOnInit() {}
+  constructor(applicationsService: ApplicationsService, private router: Router, private route: ActivatedRoute) {
+    this.applications$ = applicationsService.getApplications();
+  }
+
+  ngOnInit() { }
 }
