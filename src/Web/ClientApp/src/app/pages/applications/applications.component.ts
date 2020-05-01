@@ -5,6 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './applications.component.html',
 })
 export class ApplicationsComponent implements OnInit {
-  
-  ngOnInit(): void {}
+
+  ngOnInit(): void { }
 }
