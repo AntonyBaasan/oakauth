@@ -8,7 +8,7 @@ namespace Web.Automapper
     {
         public ApplicationProfile()
         {
-            CreateMap<Client, Application>();
+            CreateMap<Client, ApplicationDto>();
         }
     }
 }

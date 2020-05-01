@@ -10,6 +10,7 @@ using IdentityServer4.Models;
 using Microsoft.VisualBasic;
 using System.Collections.ObjectModel;
 using IdentityModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace Applications.Sqlite
 {
@@ -22,7 +23,7 @@ namespace Applications.Sqlite
             this.is4Context = is4Context;
         }
 
-        public Task<Client> CreateApplicationAsync(Client client)
+        public async Task<Client> CreateApplicationAsync(Client client)
         {
             if (string.IsNullOrEmpty(client.ClientName))
             {
@@ -41,7 +42,8 @@ namespace Applications.Sqlite
             };
 
             this.is4Context.Clients.Add(client.ToEntity());
-            return Task.FromResult(client);
+            int count = await this.is4Context.SaveChangesAsync();
+            return client;
         }
 
         public Task<List<Client>> GetApplicationsAsync()
@@ -57,6 +59,7 @@ namespace Applications.Sqlite
         {
             var client = is4Context.Clients
                 .Where(c => c.ClientId.Equals(clientId))
+                .Include(c=> c.Properties)
                 .FirstOrDefault();
             return Task.FromResult(client.ToModel());
         }

@@ -22,25 +22,27 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public async Task<Application> Create() 
+        public async Task<ApplicationDto> Create([FromBody] ApplicationDto applicationDto) 
         {
-            var client = await applicationsService.CreateApplicationAsync(new Client { ClientName = "some client"});
-            var application = mapper.Map<Client, Application>(client);
+            var client = await applicationsService.CreateApplicationAsync(new Client { 
+                ClientName = applicationDto.ClientName
+            });
+            var application = mapper.Map<Client, ApplicationDto>(client);
             return application;
         }
 
-        public async Task<List<Application>> GetAll()
+        public async Task<List<ApplicationDto>> GetAll()
         {
             var clients = await applicationsService.GetApplicationsAsync();
-            List<Application> applications = mapper.Map<List<Client>, List<Application>>(clients);
+            List<ApplicationDto> applications = mapper.Map<List<Client>, List<ApplicationDto>>(clients);
             return applications;
         }
 
         [HttpGet("{clientId}")]
-        public async Task<Application> GetById(string clientId)
+        public async Task<ApplicationDto> GetById(string clientId)
         {
             var client = await applicationsService.GetApplicationsByIdAsync(clientId);
-            var application = mapper.Map<Client, Application>(client);
+            var application = mapper.Map<Client, ApplicationDto>(client);
             return application;
         }
     }
