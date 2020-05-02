@@ -10,5 +10,6 @@ namespace Web.Dto
         public string Description { get; set; }
         public ICollection<Secret> ClientSecrets { get; set; }
         public Dictionary<string, string> Properties { get; set; }
+        public ApplicationType ApplicationType { get; set; }
     }
 }
