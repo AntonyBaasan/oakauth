@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Applications.Interfaces", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OakAuth.Utilities", "src\OakAuth.Utilities\OakAuth.Utilities.csproj", "{5D8005C4-8E48-46A8-B2FA-766CEB3D6644}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applications.Sqlite", "src\Applications.Sqlite\Applications.Sqlite.csproj", "{31FE3ACA-841C-4E84-B893-77C673FFF330}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Applications.Sqlite", "src\Applications.Sqlite\Applications.Sqlite.csproj", "{31FE3ACA-841C-4E84-B893-77C673FFF330}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

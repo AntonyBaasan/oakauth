@@ -49,6 +49,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="IdentityServer-dev.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="IdentityServer-prod.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
