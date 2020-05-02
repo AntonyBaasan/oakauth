@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ApplicationsComponent } from './applications.component';
 import { CommonModule } from '@angular/common';
 import { ApplicationsRoutingModule } from './applications-routing.module';
@@ -15,7 +16,8 @@ import { ApplicationSettingsComponent } from './application-settings/application
     HttpClientModule,
     ApplicationsRoutingModule,
     IconsModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   declarations: [
     ApplicationsComponent,

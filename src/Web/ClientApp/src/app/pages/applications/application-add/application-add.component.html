@@ -1,1 +1,53 @@
-<p>application-add works!</p>
+<h2>Create application</h2>
+
+<form [formGroup]="applicationForm">
+
+  <div class="form-group">
+    <label for="applicationName">Name</label>
+    <input type="text" class="form-control" id="applicationName" aria-describedby="nameHelp"
+    formControlName="applicationName" [ngClass]="{'is-invalid': f.applicationName.touched && f.applicationName.invalid }">
+    <small id="nameHelp" class="form-text text-muted">Name can be changed later.</small>
+  </div>
+
+
+  <div>
+    <label>Choose application type</label>
+    <div class="row">
+      <div class="col-md-3" (click)="selectApplicationType(applicationTypeEnum.Native)">
+        <div class="card" [ngClass]="{'border-primary': applicationType===applicationTypeEnum.Native}">
+          <div class="card-body">
+            Native
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3" (click)="selectApplicationType(applicationTypeEnum.SinglePageApplication)">
+        <div class="card" [ngClass]="{'border-primary': applicationType===applicationTypeEnum.SinglePageApplication}">
+          <div class="card-body">
+            Signle Page Applicaton
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3" (click)="selectApplicationType(applicationTypeEnum.RegularWeb)">
+        <div class="card" [ngClass]="{'border-primary': applicationType===applicationTypeEnum.RegularWeb}">
+          <div class="card-body">
+            Regular Web Application
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3" (click)="selectApplicationType(applicationTypeEnum.MachineToMachine)">
+        <div class="card" [ngClass]="{'border-primary': applicationType===applicationTypeEnum.MachineToMachine}">
+          <div class="card-body">
+            Machine to machine
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <button type="button" class="btn btn-success" (click)="create()" [disabled]="applicationForm.invalid">Create</button>
+    <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+  </div>
+</form>
+
+
