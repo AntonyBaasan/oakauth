@@ -9,7 +9,7 @@ trigger:
       - deploy
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 variables:
   solution: '**/*.sln'
@@ -40,7 +40,7 @@ steps:
   displayName: 'deploay to AzureWebApp oakauth'
   inputs:
     azureSubscription: 'Free Trial(eb67c5b1-4c4b-4f3f-a123-73e2fcd0470e)'
-    appType: webAppLinux
-    appName: 'oakauth'
+    appType:  'webApp'
+    appName: 'oakauth-demo'
     package: '$(Build.ArtifactStagingDirectory)/**/*.zip'    
 
