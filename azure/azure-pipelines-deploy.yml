@@ -42,5 +42,6 @@ steps:
     appType: 'webAppLinux'
     appName: 'oakauth'
     package: '$(Build.ArtifactStagingDirectory)/oakauth'
+    deploymentMethod: runFromPackage
     
 
