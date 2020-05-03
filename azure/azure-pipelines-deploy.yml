@@ -34,6 +34,7 @@ steps:
     command: publish 
     projects: 'src/Web/Web.csproj'    
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)/oakauth'
+    zipAfterPublish: true
 
 - task: AzureWebApp@1
   displayName: 'deploay to AzureWebApp oakauth'
@@ -41,7 +42,5 @@ steps:
     azureSubscription: 'Free Trial(eb67c5b1-4c4b-4f3f-a123-73e2fcd0470e)'
     appType: 'webAppLinux'
     appName: 'oakauth'
-    package: '$(Build.ArtifactStagingDirectory)/oakauth'
-    deploymentMethod: runFromPackage
-    
+    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'    
 
