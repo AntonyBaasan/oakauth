@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
 using System;
-using IdentityServer4.Models;
 using Microsoft.VisualBasic;
 using System.Collections.ObjectModel;
 using IdentityModel;
