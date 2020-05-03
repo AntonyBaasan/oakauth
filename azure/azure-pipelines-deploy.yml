@@ -34,7 +34,6 @@ steps:
     command: publish 
     projects: 'src/Web/Web.csproj'    
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
 
 - task: AzureWebApp@1
   displayName: 'deploay to AzureWebApp oakauth'
@@ -43,3 +42,5 @@ steps:
     appType: 'webAppLinux'
     appName: 'oakauth'
     package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+    
+
