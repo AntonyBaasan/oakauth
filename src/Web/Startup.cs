@@ -1,6 +1,8 @@
 using Applications.Interfaces;
 using Applications.Sqlite;
 using AutoMapper;
+using DataProvider.Sqlite.Extensions.Extensions;
+using DataProvider.Postgres.Extensions.Extensions;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.AspNetCore.Builder;
@@ -12,7 +14,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
 using Web.Demo;
-using Oakauth.Migrations.Sqlite.Extensions;
 
 namespace Web
 {
@@ -98,14 +99,16 @@ namespace Web
             if (!string.IsNullOrEmpty(sqliteConnectionString))
             {
                 builder = services.UseSqlite(sqliteConnectionString);
+                builder.AddDeveloperSigningCredential();
+                return;
             }
             var postgresConnectionString = Configuration.GetConnectionString("Postgres");
             if (!string.IsNullOrEmpty(postgresConnectionString))
             {
-                //builder = services.UseSqlite(sqliteConnectionString);
+                builder = services.UseNpgsql(postgresConnectionString);
+                builder.AddDeveloperSigningCredential();
+                return;
             }
-
-            builder?.AddDeveloperSigningCredential();
         }
 
         private void InitializeDatabase(IApplicationBuilder app)
