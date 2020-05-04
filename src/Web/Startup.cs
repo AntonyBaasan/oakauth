@@ -109,6 +109,14 @@ namespace Web
                 builder.AddDeveloperSigningCredential();
                 return;
             }
+            var postgresConnectionString1 = Configuration.GetConnectionString("POSTGRESQLCONNSTR_Postgres");
+            if (!string.IsNullOrEmpty(postgresConnectionString))
+            {
+                builder = services.UseNpgsql(postgresConnectionString1);
+                builder.AddDeveloperSigningCredential();
+                return;
+            }
+            
         }
 
         private void InitializeDatabase(IApplicationBuilder app)
