@@ -11,8 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
-using System.Reflection;
 using Web.Demo;
+using Oakauth.Migrations.Sqlite.Extensions;
 
 namespace Web
 {
@@ -31,23 +31,7 @@ namespace Web
             services.AddAutoMapper(this.GetType().Assembly);
             services.AddScoped<IApplicationsService, ApplicatonsService>();
 
-            var connectionString = Configuration.GetConnectionString("DefaultConnection");
-            var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
-            var builder = services.AddIdentityServer()
-                //.AddTestUsers(TestUsers.Users)
-                .AddConfigurationStore(options =>
-                {
-                    options.ConfigureDbContext = builder => builder.UseSqlite(connectionString, sql=>sql.MigrationsAssembly(migrationsAssembly));
-                })
-                .AddOperationalStore(options =>
-                {
-                    options.ConfigureDbContext = builder => builder.UseSqlite(connectionString, sql=>sql.MigrationsAssembly(migrationsAssembly));
-                });
-            //      .AddInMemoryApiResources(Config.Api)
-            //      .AddInMemoryClients(Config.Clients)
-            //.AddInMemoryIdentityResources(Config.GetResources());
-
-            builder.AddDeveloperSigningCredential();
+            AddIdentityServer(services);
 
             services.AddControllersWithViews();
             // In production
@@ -105,6 +89,23 @@ namespace Web
                     //spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
                 }
             });
+        }
+
+        private void AddIdentityServer(IServiceCollection services)
+        {
+            IIdentityServerBuilder builder = null;
+            var sqliteConnectionString = Configuration.GetConnectionString("Sqlite");
+            if (!string.IsNullOrEmpty(sqliteConnectionString))
+            {
+                builder = services.UseSqlite(sqliteConnectionString);
+            }
+            var postgresConnectionString = Configuration.GetConnectionString("Postgres");
+            if (!string.IsNullOrEmpty(postgresConnectionString))
+            {
+                //builder = services.UseSqlite(sqliteConnectionString);
+            }
+
+            builder?.AddDeveloperSigningCredential();
         }
 
         private void InitializeDatabase(IApplicationBuilder app)
