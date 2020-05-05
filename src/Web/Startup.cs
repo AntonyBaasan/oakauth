@@ -95,30 +95,38 @@ namespace Web
 
         private void AddIdentityServer(IServiceCollection services)
         {
-            IIdentityServerBuilder builder = null;
-            var sqliteConnectionString = Configuration.GetConnectionString("Sqlite");
+            var sqliteConnectionString = GetSqliteConnectionString();
             if (!string.IsNullOrEmpty(sqliteConnectionString))
             {
-                builder = services.UseSqlite(sqliteConnectionString);
+                var builder = services.UseSqlite(sqliteConnectionString);
                 builder.AddDeveloperSigningCredential();
                 return;
             }
-            var postgresConnectionString = Configuration.GetConnectionString("Postgres");
+            var postgresConnectionString = GetPostgresConnectionString();
             if (!string.IsNullOrEmpty(postgresConnectionString))
             {
-                builder = services.UseNpgsql(postgresConnectionString);
-                builder.AddDeveloperSigningCredential();
-                return;
-            }
-            var postgresConnectionString1 = Environment.GetEnvironmentVariable("POSTGRESQLCONNSTR_Postgres");
-            if (!string.IsNullOrEmpty(postgresConnectionString1))
-            {
-                builder = services.UseNpgsql(postgresConnectionString1);
+                var builder = services.UseNpgsql(postgresConnectionString);
                 builder.AddDeveloperSigningCredential();
                 return;
             }
 
             throw new Exception("Can not find any connection string!");
+        }
+
+        private string GetPostgresConnectionString()
+        {
+            var postgres = Configuration.GetConnectionString("Postgres");
+            if (!string.IsNullOrEmpty(postgres))
+            {
+                return postgres;
+            }
+            
+            return Environment.GetEnvironmentVariable("POSTGRESQLCONNSTR_Postgres");
+        }
+
+        private string GetSqliteConnectionString()
+        {
+            return Configuration.GetConnectionString("Sqlite");
         }
 
         private void InitializeDatabase(IApplicationBuilder app)
