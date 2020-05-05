@@ -1,3 +1,4 @@
+using System;
 using Applications.Interfaces;
 using Applications.Sqlite;
 using AutoMapper;
@@ -116,7 +117,8 @@ namespace Web
                 builder.AddDeveloperSigningCredential();
                 return;
             }
-            
+
+            throw new Exception("Can not find any connection string!");
         }
 
         private void InitializeDatabase(IApplicationBuilder app)
