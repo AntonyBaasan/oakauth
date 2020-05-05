@@ -111,7 +111,7 @@ namespace Web
                 return;
             }
             var postgresConnectionString1 = Environment.GetEnvironmentVariable("POSTGRESQLCONNSTR_Postgres");
-            if (!string.IsNullOrEmpty(postgresConnectionString))
+            if (!string.IsNullOrEmpty(postgresConnectionString1))
             {
                 builder = services.UseNpgsql(postgresConnectionString1);
                 builder.AddDeveloperSigningCredential();
