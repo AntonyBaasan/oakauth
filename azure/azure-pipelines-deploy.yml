@@ -40,7 +40,6 @@ steps:
   displayName: 'deploay to AzureWebApp oakauth'
   inputs:
     azureSubscription: 'Free Trial(eb67c5b1-4c4b-4f3f-a123-73e2fcd0470e)'
-    appType:  'webApp'
+    appType:  'webAppLinux'
     appName: 'oakauth'
     package: '$(Build.ArtifactStagingDirectory)/**/*.zip'    
-
