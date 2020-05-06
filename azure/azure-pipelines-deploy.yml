@@ -35,7 +35,7 @@ steps:
     secureFile: 'IdentityServerCert.pfx'
 
 - task: CopyFiles@2
-displayName: 'Copy IdentityServerCert.pfx to publish directory'
+  displayName: 'Copy IdentityServerCert.pfx to publish directory'
   inputs:
     SourceFolder: '$(IdentityServerCertFile.secureFilePath)'
     Contents: 'IdentityServerCert.pfx'
