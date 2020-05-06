@@ -33,18 +33,11 @@ steps:
   inputs:
     secureFile: 'IdentityServerCert.pfx'
 
-- task: DownloadSecureFile@1
-  name: identityServerCertFile
-  displayName: 'Download IdentityServerCert.pfx'
-  inputs:
-    secureFile: 'IdentityServerCert.pfx'
-    retryCount: 3
-
 - task: CopyFiles@2
   displayName: 'Copy IdentityServerCert.pfx to publish directory'
   inputs:
-    SourceFolder: '$(identityServerCertFile2.secureFilePath)'
-    Contents: 'IdentityServerCert.pfx'
+    SourceFolder: '$(identityServerCertFile.secureFilePath)'
+    Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: DotNetCoreCLI@2
