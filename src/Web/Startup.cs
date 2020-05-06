@@ -17,6 +17,7 @@ using System.Linq;
 using Web.Demo;
 using System.Security.Cryptography.X509Certificates;
 using System.IO;
+using System.Runtime.ConstrainedExecution;
 
 namespace Web
 {
@@ -119,9 +120,15 @@ namespace Web
         private void AddCredential(IIdentityServerBuilder builder)
         {
             var certPassword = Configuration.GetValue<string>("cert:password");
+            if (string.IsNullOrEmpty(certPassword)) { 
+                certPassword = Environment.GetEnvironmentVariable("APPSETTING_certPassword");
+            }
             var certFile = Configuration.GetValue<string>("cert:file");
+            if (string.IsNullOrEmpty(certFile)) {
+                certFile = Environment.GetEnvironmentVariable("APPSETTING_certFile");
+            }
 
-            X509Certificate2 cert = cert = new X509Certificate2(
+            var cert = new X509Certificate2(
                 Path.Combine(Directory.GetCurrentDirectory(), certFile)
                 , certPassword);
             builder.AddSigningCredential(cert);
