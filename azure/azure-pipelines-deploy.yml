@@ -29,8 +29,17 @@ steps:
     restoreSolution: '$(solution)'
 
 - task: DownloadSecureFile@1
+  displayName: 'Download IdentityServerCert.pfx'
+  name: IdentityServerCertFile
   inputs:
     secureFile: 'IdentityServerCert.pfx'
+
+- task: CopyFiles@2
+displayName: 'Copy IdentityServerCert.pfx to publish directory'
+  inputs:
+    SourceFolder: '$(IdentityServerCertFile.secureFilePath)'
+    Contents: 'IdentityServerCert.pfx'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: DotNetCoreCLI@2
   displayName: 'publish'
