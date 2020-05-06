@@ -28,6 +28,10 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+- task: DownloadSecureFile@1
+  name: identityServerCertFile2
+  inputs:
+    secureFile: 'IdentityServerCert.pfx'
 
 - task: DownloadSecureFile@1
   name: identityServerCertFile
@@ -39,7 +43,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy IdentityServerCert.pfx to publish directory'
   inputs:
-    SourceFolder: '$(identityServerCertFile.secureFilePath)'
+    SourceFolder: '$(identityServerCertFile2.secureFilePath)'
     Contents: 'IdentityServerCert.pfx'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
