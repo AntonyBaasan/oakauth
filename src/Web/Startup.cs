@@ -15,6 +15,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
 using Web.Demo;
+using System.Security.Cryptography.X509Certificates;
+using System.IO;
 
 namespace Web
 {
@@ -99,18 +101,32 @@ namespace Web
             if (!string.IsNullOrEmpty(sqliteConnectionString))
             {
                 var builder = services.UseSqlite(sqliteConnectionString);
-                builder.AddDeveloperSigningCredential();
+                //builder.AddDeveloperSigningCredential();
+                AddCredential(builder);
                 return;
             }
             var postgresConnectionString = GetPostgresConnectionString();
             if (!string.IsNullOrEmpty(postgresConnectionString))
             {
                 var builder = services.UseNpgsql(postgresConnectionString);
-                builder.AddDeveloperSigningCredential();
+                AddCredential(builder);
                 return;
             }
 
             throw new Exception("Can not find any connection string!");
+        }
+
+        private void AddCredential(IIdentityServerBuilder builder)
+        {
+            var certPassword = Configuration.GetValue<string>("cert:password");
+            var certFile = Configuration.GetValue<string>("cert:file");
+
+            X509Certificate2 cert = cert = new X509Certificate2(
+                Path.Combine(Directory.GetCurrentDirectory(), certFile)
+                , certPassword);
+            builder.AddSigningCredential(cert);
+
+            //builder.AddDeveloperSigningCredential();
         }
 
         private string GetPostgresConnectionString()
@@ -120,7 +136,7 @@ namespace Web
             {
                 return postgres;
             }
-            
+
             return Environment.GetEnvironmentVariable("POSTGRESQLCONNSTR_Postgres");
         }
 
