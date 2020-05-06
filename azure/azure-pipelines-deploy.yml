@@ -37,8 +37,8 @@ steps:
 - script: |
     echo $(identityServerCertFile.secureFilePath) 
     ls $(identityServerCertFile.secureFilePath)
-    cp $(identityServerCertFile.secureFilePath) $(identityServerCertFile.secureFilePath)/IdentityServerCert.pfx
-    ls $(identityServerCertFile.secureFilePath)
+    cp $(identityServerCertFile.secureFilePath) $(Build.ArtifactStagingDirectory)/IdentityServerCert.pfx
+    ls $(Build.ArtifactStagingDirectory)
 
 - task: CopyFiles@2
   displayName: 'Copy IdentityServerCert.pfx to publish directory'
