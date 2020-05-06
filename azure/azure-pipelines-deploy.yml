@@ -29,7 +29,8 @@ steps:
     restoreSolution: '$(solution)'
 
 - task: DownloadSecureFile@1
-  name: identityServerCertFile2
+  name: identityServerCertFile
+  displayName: 'Download IdentityServerCert.pfx'
   inputs:
     secureFile: 'IdentityServerCert.pfx'
 
