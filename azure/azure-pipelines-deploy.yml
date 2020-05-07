@@ -49,7 +49,16 @@ steps:
     zipAfterPublish: false
 
 - script: |
-    ls $(Build.ArtifactStagingDirectory)
+    cp $(Build.ArtifactStagingDirectory)/IdentityServerCert.pfx $(Build.ArtifactStagingDirectory)/Web/IdentityServerCert.pfx
+    ls $(Build.ArtifactStagingDirectory)/Web
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/Web'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/Web.zip'
+    replaceExistingArchive: true
 
 # - task: AzureWebApp@1
 #   displayName: 'deploay to AzureWebApp oakauth'
