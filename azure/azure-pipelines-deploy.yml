@@ -50,13 +50,13 @@ steps:
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: true
 
-# - task: ArchiveFiles@2
-#   inputs:
-#     rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/Web'
-#     includeRootFolder: true
-#     archiveType: 'zip'
-#     archiveFile: '$(Build.ArtifactStagingDirectory)/Web.zip'
-#     replaceExistingArchive: true
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/Web'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/Web.zip'
+    replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
   inputs:
