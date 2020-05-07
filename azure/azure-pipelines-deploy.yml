@@ -60,10 +60,16 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/Web.zip'
     replaceExistingArchive: true
 
-# - task: AzureWebApp@1
-#   displayName: 'deploay to AzureWebApp oakauth'
-#   inputs:
-#     azureSubscription: 'Free Trial(eb67c5b1-4c4b-4f3f-a123-73e2fcd0470e)'
-#     appType:  'webAppLinux'
-#     appName: 'oakauth'
-#     package: '$(Build.ArtifactStagingDirectory)/**/*.zip'    
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
+- task: AzureWebApp@1
+  displayName: 'deploay to AzureWebApp oakauth'
+  inputs:
+    azureSubscription: 'Free Trial(eb67c5b1-4c4b-4f3f-a123-73e2fcd0470e)'
+    appType:  'webAppLinux'
+    appName: 'oakauth'
+    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'    
