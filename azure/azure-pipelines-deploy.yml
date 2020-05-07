@@ -28,11 +28,13 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+# DownloadSecureFile task downloads target file to the location: $(Build.ArtifactStagingDirectory)
 - task: DownloadSecureFile@1
   name: identityServerCertFile
   displayName: 'Download IdentityServerCert.pfx'
   inputs:
     secureFile: 'IdentityServerCert.pfx'
+
 
 - script: |
     echo $(identityServerCertFile.secureFilePath) 
@@ -46,19 +48,15 @@ steps:
     command: publish 
     projects: 'src/Web/Web.csproj'    
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: false
+    zipAfterPublish: true
 
-- script: |
-    cp $(Build.ArtifactStagingDirectory)/IdentityServerCert.pfx $(Build.ArtifactStagingDirectory)/Web/IdentityServerCert.pfx
-    ls $(Build.ArtifactStagingDirectory)/Web
-
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/Web'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/Web.zip'
-    replaceExistingArchive: true
+# - task: ArchiveFiles@2
+#   inputs:
+#     rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/Web'
+#     includeRootFolder: true
+#     archiveType: 'zip'
+#     archiveFile: '$(Build.ArtifactStagingDirectory)/Web.zip'
+#     replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
   inputs:
