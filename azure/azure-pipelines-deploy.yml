@@ -36,11 +36,11 @@ steps:
     secureFile: 'IdentityServerCert.pfx'
 
 
-# - script: |
-#     echo $(identityServerCertFile.secureFilePath) 
-#     ls $(identityServerCertFile.secureFilePath)
-#     cp $(identityServerCertFile.secureFilePath) $(Build.ArtifactStagingDirectory)/IdentityServerCert.pfx
-#     ls $(Build.ArtifactStagingDirectory)
+- script: |
+    echo $(identityServerCertFile.secureFilePath) 
+    ls $(identityServerCertFile.secureFilePath)
+    cp $(identityServerCertFile.secureFilePath) $(Build.ArtifactStagingDirectory)/IdentityServerCert.pfx
+    ls $(Build.ArtifactStagingDirectory)
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet publish Web'
