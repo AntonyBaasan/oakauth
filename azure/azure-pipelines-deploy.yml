@@ -64,12 +64,13 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/Web.zip'
     replaceExistingArchive: true
 
-- task: PublishBuildArtifacts@1
-  displayName: 'Save build artifact'
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+# Uncomment this task only to debug pipeline
+# - task: PublishBuildArtifacts@1
+#   displayName: 'Save build artifact'
+#   inputs:
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#     ArtifactName: 'drop'
+#     publishLocation: 'Container'
 
 - task: AzureWebApp@1
   displayName: 'Deploay to AzureWebApp oakauth'
