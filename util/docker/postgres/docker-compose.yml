@@ -9,8 +9,8 @@ services:
     environment:
       POSTGRES_PASSWORD: 123
 
-  # adminer:
-  #   image: adminer
-  #   restart: always
-  #   ports:
-  #     - 8080:8080
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
