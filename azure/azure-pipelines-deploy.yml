@@ -43,7 +43,7 @@ steps:
 #     ls $(Build.ArtifactStagingDirectory)
 
 - task: DotNetCoreCLI@2
-  displayName: 'publish'
+  displayName: 'dotnet publish Web'
   inputs:
     command: publish 
     projects: 'src/Web/Web.csproj'    
@@ -72,7 +72,7 @@ steps:
     publishLocation: 'Container'
 
 - task: AzureWebApp@1
-  displayName: 'deploay to AzureWebApp oakauth'
+  displayName: 'Deploay to AzureWebApp oakauth'
   inputs:
     azureSubscription: 'Free Trial(eb67c5b1-4c4b-4f3f-a123-73e2fcd0470e)'
     appType:  'webAppLinux'
