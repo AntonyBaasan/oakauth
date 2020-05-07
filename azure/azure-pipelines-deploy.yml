@@ -31,16 +31,16 @@ steps:
 # DownloadSecureFile task downloads target file to the location: $(Build.ArtifactStagingDirectory)
 - task: DownloadSecureFile@1
   name: identityServerCertFile
-  displayName: 'Download IdentityServerCert.pfx'
+  displayName: 'Download pfx certificate'
   inputs:
     secureFile: 'IdentityServerCert.pfx'
 
 
-- script: |
-    echo $(identityServerCertFile.secureFilePath) 
-    ls $(identityServerCertFile.secureFilePath)
-    cp $(identityServerCertFile.secureFilePath) $(Build.ArtifactStagingDirectory)/IdentityServerCert.pfx
-    ls $(Build.ArtifactStagingDirectory)
+# - script: |
+#     echo $(identityServerCertFile.secureFilePath) 
+#     ls $(identityServerCertFile.secureFilePath)
+#     cp $(identityServerCertFile.secureFilePath) $(Build.ArtifactStagingDirectory)/IdentityServerCert.pfx
+#     ls $(Build.ArtifactStagingDirectory)
 
 - task: DotNetCoreCLI@2
   displayName: 'publish'
@@ -48,9 +48,15 @@ steps:
     command: publish 
     projects: 'src/Web/Web.csproj'    
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: true
+    zipAfterPublish: false
+
+- script: |
+    mv $(Build.ArtifactStagingDirectory)/IdentityServerCert.pfx $(Build.ArtifactStagingDirectory)/Web/IdentityServerCert.pfx
+    ls $(Build.ArtifactStagingDirectory)/Web
+  displayName: 'Move certificate into release folder'
 
 - task: ArchiveFiles@2
+  displayName: 'Create Zip file for Azure App Service'
   inputs:
     rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/Web'
     includeRootFolder: false
@@ -59,6 +65,7 @@ steps:
     replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
+  displayName: 'Save build artifact'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
