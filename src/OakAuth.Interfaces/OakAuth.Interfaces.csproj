@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>OakAuth.Interfaces</AssemblyName>
+    <RootNamespace>OakAuth.Interfaces</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

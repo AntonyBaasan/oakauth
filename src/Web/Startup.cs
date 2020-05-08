@@ -15,8 +15,8 @@ using System.Linq;
 using Web.Demo;
 using System.Security.Cryptography.X509Certificates;
 using System.IO;
-using Applications.Service;
-using Applications.Interfaces;
+using OakAuth.Interfaces.Applications;
+using OakAuth.Service;
 
 namespace Web
 {

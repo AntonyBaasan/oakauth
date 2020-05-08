@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using IdentityServer4.Models;
 
-namespace Applications.Interfaces
+namespace OakAuth.Interfaces.Applications
 {
     public class Application
     {

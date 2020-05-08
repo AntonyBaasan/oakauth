@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Applications.Interfaces
+namespace OakAuth.Interfaces.Applications
 {
     public interface IApplicationsService
     {

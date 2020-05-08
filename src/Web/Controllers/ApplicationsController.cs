@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using Applications.Interfaces;
 using System.Threading.Tasks;
+using OakAuth.Interfaces.Applications;
 
 namespace Web.Controllers
 {

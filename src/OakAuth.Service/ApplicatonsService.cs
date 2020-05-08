@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Applications.Interfaces;
 using IdentityServer4.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,9 +9,9 @@ using System.Collections.ObjectModel;
 using IdentityModel;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
-using Microsoft.VisualBasic;
+using OakAuth.Interfaces.Applications;
 
-namespace Applications.Service
+namespace OakAuth.Service
 {
     public class ApplicatonsService : IApplicationsService
     {

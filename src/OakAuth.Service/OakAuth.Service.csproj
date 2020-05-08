@@ -1,7 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>OakAuth.Service</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,7 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Applications.Interfaces\Applications.Interfaces.csproj" />
+    <Folder Include="Utility\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OakAuth.Interfaces\OakAuth.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>
