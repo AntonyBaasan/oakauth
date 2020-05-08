@@ -17,7 +17,6 @@ using System.Linq;
 using Web.Demo;
 using System.Security.Cryptography.X509Certificates;
 using System.IO;
-using System.Runtime.ConstrainedExecution;
 
 namespace Web
 {
@@ -59,7 +58,8 @@ namespace Web
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                // The default HSTS value is 30 days. You may want to 
+                // change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -98,33 +98,34 @@ namespace Web
 
         private void AddIdentityServer(IServiceCollection services)
         {
+            IIdentityServerBuilder builder = null;
             var sqliteConnectionString = GetSqliteConnectionString();
             if (!string.IsNullOrEmpty(sqliteConnectionString))
             {
-                var builder = services.UseSqlite(sqliteConnectionString);
-                //builder.AddDeveloperSigningCredential();
+                builder = services.UseSqlite(sqliteConnectionString);
                 AddCredential(builder);
-                return;
             }
             var postgresConnectionString = GetPostgresConnectionString();
             if (!string.IsNullOrEmpty(postgresConnectionString))
             {
-                var builder = services.UseNpgsql(postgresConnectionString);
-                AddCredential(builder);
-                return;
+                builder = services.UseNpgsql(postgresConnectionString);
             }
 
-            throw new Exception("Can not find any connection string!");
+            if (builder == null) throw new Exception("Can not find any connection string!");
+
+            AddCredential(builder);
         }
 
         private void AddCredential(IIdentityServerBuilder builder)
         {
             var certPassword = Configuration.GetValue<string>("cert:password");
-            if (string.IsNullOrEmpty(certPassword)) { 
+            if (string.IsNullOrEmpty(certPassword))
+            {
                 certPassword = Environment.GetEnvironmentVariable("APPSETTING_certPassword");
             }
             var certFile = Configuration.GetValue<string>("cert:file");
-            if (string.IsNullOrEmpty(certFile)) {
+            if (string.IsNullOrEmpty(certFile))
+            {
                 certFile = Environment.GetEnvironmentVariable("APPSETTING_certFile");
             }
 
@@ -156,7 +157,6 @@ namespace Web
         {
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
-
                 // migrate PersistedGrantDbContext
                 serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
 
