@@ -23,9 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Applications.Service", "src
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataProviders", "DataProviders", "{3CBAAE7A-5439-4D24-93D8-D218A6B0FC91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataProvider.SqlServer", "src\DataProvider.SqlServer\DataProvider.SqlServer.csproj", "{C37468FF-CBE0-49F8-A1E9-D5B8F0A22A21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataProvider.SqlServer", "src\DataProvider.SqlServer\DataProvider.SqlServer.csproj", "{C37468FF-CBE0-49F8-A1E9-D5B8F0A22A21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataProvider.MySql", "src\DataProvider.MySql\DataProvider.MySql.csproj", "{129BA8CB-80BB-42D0-8E43-45A2AAF8BD47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataProvider.MySql", "src\DataProvider.MySql\DataProvider.MySql.csproj", "{129BA8CB-80BB-42D0-8E43-45A2AAF8BD47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OakAuth.UnitTests", "test\OakAuth.UnitTests\OakAuth.UnitTests.csproj", "{2B4287AE-FCC2-4167-BCAE-8ED7A82A5E6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{129BA8CB-80BB-42D0-8E43-45A2AAF8BD47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{129BA8CB-80BB-42D0-8E43-45A2AAF8BD47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{129BA8CB-80BB-42D0-8E43-45A2AAF8BD47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B4287AE-FCC2-4167-BCAE-8ED7A82A5E6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B4287AE-FCC2-4167-BCAE-8ED7A82A5E6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B4287AE-FCC2-4167-BCAE-8ED7A82A5E6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B4287AE-FCC2-4167-BCAE-8ED7A82A5E6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using Applications.Interfaces;
 using System.Threading.Tasks;
-using AutoMapper;
-using IdentityServer4.Models;
 
 namespace Web.Controllers
 {
@@ -21,10 +19,7 @@ namespace Web.Controllers
         [HttpPost]
         public async Task<Application> Create([FromBody] Application application) 
         {
-            var newApplication = await applicationsService.CreateApplicationAsync(new Application
-            { 
-                ClientName = application.ClientName
-            });
+            var newApplication = await applicationsService.CreateApplicationAsync(application);
             return newApplication;
         }
 

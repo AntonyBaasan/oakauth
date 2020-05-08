@@ -2,7 +2,7 @@
 {
     public enum ApplicationType
     {
-        Native,
+        Native = 0,
         SinglePageApplication,
         RegularWeb,
         MachineToMachine

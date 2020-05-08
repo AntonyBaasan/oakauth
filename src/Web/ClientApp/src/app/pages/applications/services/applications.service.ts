@@ -21,6 +21,9 @@ export class ApplicationsService {
   }
 
   createApplication(name: string, applicationType: ApplicationType) {
-    return this.http.post<Application>(this.backendUrl, {clientName: name, applicationType});
+    return this.http.post<Application>(this.backendUrl, {
+      clientName: name,
+      applicationType: applicationType,
+    });
   }
 }

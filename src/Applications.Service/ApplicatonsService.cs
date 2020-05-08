@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using IdentityModel;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using Microsoft.VisualBasic;
 
 namespace Applications.Service
 {
@@ -32,14 +33,10 @@ namespace Applications.Service
             }
 
             var clientSecret = CryptoRandom.CreateUniqueId();
-            var secrets = new Collection<Secret>
-            {
-                new Secret(clientSecret.Sha256())
-            };
             application.ClientId = CryptoRandom.CreateUniqueId();
-            application.ClientSecrets = secrets;
+            application.ClientSecrets = new Collection<Secret> { new Secret(clientSecret.Sha256()) };
             application.Properties = new Dictionary<string, string> {
-                { "client_secret", clientSecret }
+                { "client_secret",  clientSecret}
             };
 
             var client = mapper.Map<Application, Client>(application);
@@ -61,7 +58,7 @@ namespace Applications.Service
         {
             var client = is4Context.Clients
                 .Where(c => c.ClientId.Equals(clientId))
-                .Include(c=> c.Properties)
+                .Include(c => c.Properties)
                 .FirstOrDefault();
             return Task.FromResult(mapper.Map<Client, Application>(client.ToModel()));
         }

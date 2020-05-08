@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApplicationType } from '../models/ApplicationType';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { ApplicationsService } from '../services/applications.service';
-import { finalize } from 'rxjs/operators';
+import { finalize, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-application-add',
@@ -37,6 +38,10 @@ export class ApplicationAddComponent implements OnInit {
       .pipe(
         finalize(() => {
           this.router.navigate(['applications']);
+        }),
+        catchError(err => {
+          console.error(err);
+          return of({});
         })
       )
       .subscribe((result) => {});
