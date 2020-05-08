@@ -1,0 +1,81 @@
+# ASP.NET Core (.NET Framework)
+# Build and test ASP.NET Core projects targeting the full .NET Framework.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+  branches:
+    include:
+      - deploy
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '3.1.x'
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+# DownloadSecureFile task downloads target file to the location: $(Build.ArtifactStagingDirectory)
+- task: DownloadSecureFile@1
+  name: identityServerCertFile
+  displayName: 'Download pfx certificate'
+  inputs:
+    secureFile: 'IdentityServerCert.pfx'
+
+
+- script: |
+    echo $(identityServerCertFile.secureFilePath) 
+    ls $(identityServerCertFile.secureFilePath)
+    cp $(identityServerCertFile.secureFilePath) $(Build.ArtifactStagingDirectory)/IdentityServerCert.pfx
+    ls $(Build.ArtifactStagingDirectory)
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish Web'
+  inputs:
+    command: publish 
+    projects: 'src/Web/Web.csproj'    
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: false
+
+- script: |
+    mv $(Build.ArtifactStagingDirectory)/IdentityServerCert.pfx $(Build.ArtifactStagingDirectory)/Web/IdentityServerCert.pfx
+    ls $(Build.ArtifactStagingDirectory)/Web
+  displayName: 'Move certificate into release folder'
+
+- task: ArchiveFiles@2
+  displayName: 'Create Zip file for Azure App Service'
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/Web'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/Web.zip'
+    replaceExistingArchive: true
+
+# Uncomment this task only to debug pipeline
+# - task: PublishBuildArtifacts@1
+#   displayName: 'Save build artifact'
+#   inputs:
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#     ArtifactName: 'drop'
+#     publishLocation: 'Container'
+
+- task: AzureWebApp@1
+  displayName: 'Deploay to AzureWebApp oakauth'
+  inputs:
+    azureSubscription: 'Free Trial(eb67c5b1-4c4b-4f3f-a123-73e2fcd0470e)'
+    appType:  'webAppLinux'
+    appName: 'oakauth'
+    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'    
