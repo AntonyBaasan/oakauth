@@ -1,4 +1,4 @@
-﻿namespace Web.Dto
+﻿namespace Applications.Interfaces
 {
     public enum ApplicationType
     {

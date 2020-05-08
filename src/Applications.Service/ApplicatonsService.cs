@@ -6,25 +6,27 @@ using System.Threading.Tasks;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
 using System;
-using Microsoft.VisualBasic;
 using System.Collections.ObjectModel;
 using IdentityModel;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 
-namespace Applications.Sqlite
+namespace Applications.Service
 {
     public class ApplicatonsService : IApplicationsService
     {
         private readonly ConfigurationDbContext is4Context;
+        private readonly IMapper mapper;
 
-        public ApplicatonsService(ConfigurationDbContext is4Context)
+        public ApplicatonsService(ConfigurationDbContext is4Context, IMapper mapper)
         {
             this.is4Context = is4Context;
+            this.mapper = mapper;
         }
 
-        public async Task<Client> CreateApplicationAsync(Client client)
+        public async Task<Application> CreateApplicationAsync(Application application)
         {
-            if (string.IsNullOrEmpty(client.ClientName))
+            if (string.IsNullOrEmpty(application.ClientName))
             {
                 throw new Exception("Client name is missing!");
             }
@@ -34,33 +36,34 @@ namespace Applications.Sqlite
             {
                 new Secret(clientSecret.Sha256())
             };
-            client.ClientId = CryptoRandom.CreateUniqueId();
-            client.ClientSecrets = secrets;
-            client.Properties = new Dictionary<string, string> {
+            application.ClientId = CryptoRandom.CreateUniqueId();
+            application.ClientSecrets = secrets;
+            application.Properties = new Dictionary<string, string> {
                 { "client_secret", clientSecret }
             };
 
+            var client = mapper.Map<Application, Client>(application);
             this.is4Context.Clients.Add(client.ToEntity());
             int count = await this.is4Context.SaveChangesAsync();
-            return client;
+            return application;
         }
 
-        public Task<List<Client>> GetApplicationsAsync()
+        public Task<List<Application>> GetApplicationsAsync()
         {
             return Task.FromResult(
                 is4Context.Clients
-                .Select(c => c.ToModel())
+                .Select(c => mapper.Map<Client, Application>(c.ToModel()))
                 .ToList()
             );
         }
 
-        public Task<Client> GetApplicationsByIdAsync(string clientId)
+        public Task<Application> GetApplicationsByIdAsync(string clientId)
         {
             var client = is4Context.Clients
                 .Where(c => c.ClientId.Equals(clientId))
                 .Include(c=> c.Properties)
                 .FirstOrDefault();
-            return Task.FromResult(client.ToModel());
+            return Task.FromResult(mapper.Map<Client, Application>(client.ToModel()));
         }
     }
 }

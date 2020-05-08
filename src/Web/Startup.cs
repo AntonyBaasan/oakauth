@@ -1,6 +1,5 @@
 using System;
 using Applications.Interfaces;
-using Applications.Sqlite;
 using AutoMapper;
 using DataProvider.Sqlite.Extensions.Extensions;
 using DataProvider.Postgres.Extensions.Extensions;
@@ -17,6 +16,7 @@ using System.Linq;
 using Web.Demo;
 using System.Security.Cryptography.X509Certificates;
 using System.IO;
+using Applications.Service;
 
 namespace Web
 {

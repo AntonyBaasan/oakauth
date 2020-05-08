@@ -1,9 +1,9 @@
-﻿using IdentityServer4.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using IdentityServer4.Models;
 
-namespace Web.Dto
+namespace Applications.Interfaces
 {
-    public class ApplicationDto
+    public class Application
     {
         public string ClientId { get; set; }
         public string ClientName { get; set; }

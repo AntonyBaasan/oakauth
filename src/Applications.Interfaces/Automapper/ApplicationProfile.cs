@@ -1,14 +1,13 @@
 ﻿using AutoMapper;
 using IdentityServer4.Models;
-using Web.Dto;
 
-namespace Web.Automapper
+namespace Applications.Interfaces.Automapper
 {
     public class ApplicationProfile : Profile
     {
         public ApplicationProfile()
         {
-            CreateMap<Client, ApplicationDto>();
+            CreateMap<Client, Application>();
         }
     }
 }

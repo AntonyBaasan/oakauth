@@ -40,7 +40,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Applications.Interfaces\Applications.Interfaces.csproj" />
-    <ProjectReference Include="..\Applications.Sqlite\Applications.Sqlite.csproj" />
+    <ProjectReference Include="..\Applications.Service\Applications.Service.csproj" />
     <ProjectReference Include="..\DataProvider.Postgres\DataProvider.Postgres.csproj" />
     <ProjectReference Include="..\DataProvider.Sqlite\DataProvider.Sqlite.csproj" />
     <ProjectReference Include="..\User.Interfaces\User.Interfaces.csproj">
