@@ -8,6 +8,7 @@ namespace Applications.Interfaces.Automapper
         public ApplicationProfile()
         {
             CreateMap<Client, Application>();
+            CreateMap<Application, Client>();
         }
     }
 }
