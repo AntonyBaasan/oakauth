@@ -1,5 +1,4 @@
 using System;
-using Applications.Interfaces;
 using AutoMapper;
 using DataProvider.Sqlite.Extensions.Extensions;
 using DataProvider.Postgres.Extensions.Extensions;
@@ -17,6 +16,7 @@ using Web.Demo;
 using System.Security.Cryptography.X509Certificates;
 using System.IO;
 using Applications.Service;
+using Applications.Interfaces;
 
 namespace Web
 {
@@ -32,7 +32,7 @@ namespace Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAutoMapper(this.GetType().Assembly);
+            services.AddAutoMapper(typeof(Application).Assembly);
             services.AddScoped<IApplicationsService, ApplicatonsService>();
 
             AddIdentityServer(services);
