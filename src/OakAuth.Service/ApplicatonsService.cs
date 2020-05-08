@@ -10,6 +10,8 @@ using IdentityModel;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using OakAuth.Interfaces.Applications;
+using Microsoft.AspNetCore.Builder;
+using OakAuth.Service.Utility;
 
 namespace OakAuth.Service
 {
@@ -17,11 +19,13 @@ namespace OakAuth.Service
     {
         private readonly ConfigurationDbContext is4Context;
         private readonly IMapper mapper;
+        private readonly ApplicationModelBuilder builder;
 
         public ApplicatonsService(ConfigurationDbContext is4Context, IMapper mapper)
         {
             this.is4Context = is4Context;
             this.mapper = mapper;
+            builder = new ApplicationModelBuilder();
         }
 
         public async Task<Application> CreateApplicationAsync(Application application)
@@ -31,16 +35,10 @@ namespace OakAuth.Service
                 throw new Exception("Client name is missing!");
             }
 
-            var clientSecret = CryptoRandom.CreateUniqueId();
-            application.ClientId = CryptoRandom.CreateUniqueId();
-            application.ClientSecrets = new Collection<Secret> { new Secret(clientSecret.Sha256()) };
-            application.Properties = new Dictionary<string, string> {
-                { "client_secret",  clientSecret}
-            };
-
-            var client = mapper.Map<Application, Client>(application);
-            this.is4Context.Clients.Add(client.ToEntity());
-            int count = await this.is4Context.SaveChangesAsync();
+            var fullApplication = builder.CreateApplication(application.ClientName, application.ApplicationType);
+            var client = mapper.Map<Application, Client>(fullApplication);
+            is4Context.Clients.Add(client.ToEntity());
+            int count = await is4Context.SaveChangesAsync();
             return application;
         }
 
