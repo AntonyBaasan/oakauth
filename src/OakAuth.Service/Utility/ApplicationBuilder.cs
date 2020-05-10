@@ -8,15 +8,16 @@ namespace OakAuth.Service.Utility
 {
     public class ApplicationModelBuilder
     {
-        public Application CreateApplication(string clientName, ApplicationType applicationType) {
-            Application application = new Application { ClientName = clientName };
+        public Application CreateApplication(string clientName, ApplicationType applicationType)
+        {
+            var application = new Application { ClientName = clientName };
             var clientSecret = CryptoRandom.CreateUniqueId();
             application.ClientId = CryptoRandom.CreateUniqueId();
             application.ClientSecrets = new Collection<Secret> { new Secret(clientSecret.Sha256()) };
             application.Properties = new Dictionary<string, string> {
                 { "client_secret",  clientSecret}
             };
-
+            application.ApplicationType = applicationType;
             return application;
         }
     }
