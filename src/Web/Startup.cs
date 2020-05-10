@@ -17,6 +17,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.IO;
 using OakAuth.Interfaces.Applications;
 using OakAuth.Service;
+using Applications.Service.Automapper;
 
 namespace Web
 {
@@ -32,7 +33,7 @@ namespace Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(Application).Assembly);
+            services.AddAutoMapper(typeof(ApplicationProfile).Assembly);
             services.AddScoped<IApplicationsService, ApplicatonsService>();
 
             AddIdentityServer(services);

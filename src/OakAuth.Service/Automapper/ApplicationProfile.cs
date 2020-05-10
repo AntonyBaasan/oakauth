@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using IdentityServer4.Models;
 using OakAuth.Interfaces.Applications;
-using System;
-using System.Security.Cryptography;
+using System.Collections.Generic;
 
-namespace Applications.Interfaces.Automapper
+namespace Applications.Service.Automapper
 {
     public class ApplicationProfile : Profile
     {
@@ -12,22 +11,40 @@ namespace Applications.Interfaces.Automapper
         {
             CreateMap<Client, Application>();
             CreateMap<Application, Client>()
-                .ForMember(dest=>dest.AllowedGrantTypes,
-                           opt => opt.MapFrom(src => MapAllowedGrantTypes(src.ApplicationType)));
+                .ForMember(dest => dest.AllowedGrantTypes,
+                           opt => opt.MapFrom(src => MapAllowedGrantTypes(src.ApplicationType)))
+                .ForMember(dest => dest.RequirePkce,
+                           opt => opt.MapFrom(src => IsPkceRequired(src.ApplicationType)))
+                ;
         }
 
-        private object MapAllowedGrantTypes(ApplicationType applicationType)
+        private bool IsPkceRequired(ApplicationType applicationType)
         {
-            switch (applicationType) {
+
+            switch (applicationType)
+            {
                 case ApplicationType.Native:
-                    break;
                 case ApplicationType.SinglePageApplication:
-                    break;
+                    return true;
                 case ApplicationType.RegularWeb:
-                    break;
                 case ApplicationType.MachineToMachine:
-                    return GrantType.ClientCredentials;
+                    return false;
             }
+            return false;
+        }
+
+        private ICollection<string> MapAllowedGrantTypes(ApplicationType applicationType)
+        {
+            switch (applicationType)
+            {
+                case ApplicationType.Native:
+                case ApplicationType.SinglePageApplication:
+                case ApplicationType.RegularWeb:
+                    return GrantTypes.Code;
+                case ApplicationType.MachineToMachine:
+                    return GrantTypes.ClientCredentials;
+            }
+            return null;
         }
         //public static ICollection<string> Implicit { get; }
         //public static ICollection<string> ImplicitAndClientCredentials { get; }
