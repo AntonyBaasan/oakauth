@@ -86,6 +86,9 @@ namespace Web
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -125,6 +128,7 @@ namespace Web
 
             if (builder == null) throw new Exception("Can not find any connection string!");
 
+            builder.AddTestUsers(TestUsers.Users);
             AddCredential(builder);
         }
 
