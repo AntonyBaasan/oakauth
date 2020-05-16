@@ -15,11 +15,27 @@ namespace OakAuth.UnitTests.Services.Utility
         }
 
         [Test]
-        public void CreateAppliation_Should_Set_ClientName()
+        public void CreateAppliation_SetClientName()
         {
             var app =  applicationModelBuilder.CreateApplication("App1", ApplicationType.MachineToMachine);
 
             Assert.AreEqual("App1", app.ClientName);
+        }
+
+        [Test]
+        public void CreateAppliation_SetApplicationType()
+        {
+            var app =  applicationModelBuilder.CreateApplication("App1", ApplicationType.MachineToMachine);
+
+            Assert.AreEqual(ApplicationType.MachineToMachine, app.ApplicationType);
+        }
+
+        [Test]
+        public void CreateAppliation_WhenMachineToMachineType_AllowedScopesEmpty()
+        {
+            var app =  applicationModelBuilder.CreateApplication("App1", ApplicationType.MachineToMachine);
+
+            Assert.AreEqual(0, app.AllowedScopes.Count);
         }
     }
 }
