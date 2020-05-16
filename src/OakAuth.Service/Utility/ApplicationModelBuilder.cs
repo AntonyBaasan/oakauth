@@ -18,7 +18,16 @@ namespace OakAuth.Service.Utility
                 { "client_secret",  clientSecret}
             };
             application.ApplicationType = applicationType;
+            application.AllowedScopes = GetAllowedScopes(applicationType);
+
             return application;
+        }
+
+        private ICollection<string> GetAllowedScopes(ApplicationType applicationType)
+        {
+            ICollection<string> scopes = new List<string>();
+
+            return scopes;
         }
     }
 }

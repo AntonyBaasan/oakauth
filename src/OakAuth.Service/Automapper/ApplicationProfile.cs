@@ -56,5 +56,29 @@ namespace Applications.Service.Automapper
         //public static ICollection<string> ResourceOwnerPassword { get; }
         //public static ICollection<string> ResourceOwnerPasswordAndClientCredentials { get; }
         //public static ICollection<string> DeviceFlow { get; }
+
+
+        //new Client
+        //{
+        //    ClientName  = "OIDC Debugger",
+        //    ClientId = "oidcdebugger",
+        //    ClientUri  = "https://oidcdebugger.com/",
+
+        //    AllowedGrantTypes = GrantTypes.Hybrid,
+        //    AllowAccessTokensViaBrowser = true,
+        //    ClientSecrets = { new Secret("password".Sha256()) },
+
+        //    RedirectUris =           { "https://oidcdebugger.com/debug" },
+        //    PostLogoutRedirectUris = { "https://oidcdebugger.com/debug" },
+        //    AllowedCorsOrigins =     { "https://oidcdebugger.com" },
+
+        //    AllowedScopes = {
+        //        IdentityServerConstants.StandardScopes.OpenId,
+        //        IdentityServerConstants.StandardScopes.Profile,
+        //        IdentityServerConstants.StandardScopes.Email,
+        //        "api1", "api2.read_only"
+        //    }
+        //}
+
     }
 }

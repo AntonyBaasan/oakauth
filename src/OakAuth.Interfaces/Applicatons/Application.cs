@@ -11,5 +11,6 @@ namespace OakAuth.Interfaces.Applications
         public ICollection<Secret> ClientSecrets { get; set; }
         public Dictionary<string, string> Properties { get; set; }
         public ApplicationType ApplicationType { get; set; }
+        public ICollection<string> AllowedScopes { get; set; }
     }
 }
