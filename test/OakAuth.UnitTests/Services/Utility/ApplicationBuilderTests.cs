@@ -19,7 +19,7 @@ namespace OakAuth.UnitTests.Services.Utility
         {
             var app =  applicationModelBuilder.CreateApplication("App1", ApplicationType.MachineToMachine);
 
-            Assert.AreEqual("app1", app.ClientName);
+            Assert.AreEqual("App1", app.ClientName);
         }
     }
 }
