@@ -111,13 +111,35 @@ namespace Web.Demo
                 },
                 new Client
                 {
-                    ClientName  = "OIDC Debugger",
-                    ClientId = "oidcdebugger",
+                    ClientName  = "OIDC Debugger 1",
+                    ClientId = "oidcdebugger1",
                     ClientUri  = "https://oidcdebugger.com/",
 
                     AllowedGrantTypes = GrantTypes.Hybrid,
                     AllowAccessTokensViaBrowser = true,
                     ClientSecrets = { new Secret("password".Sha256()) },
+
+                    RedirectUris =           { "https://oidcdebugger.com/debug" },
+                    PostLogoutRedirectUris = { "https://oidcdebugger.com/debug" },
+                    AllowedCorsOrigins =     { "https://oidcdebugger.com" },
+
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                        "api1", "api2.read_only"
+                    }
+                },
+                new Client
+                {
+                    ClientName  = "OIDC Debugger 2",
+                    ClientId = "oidcdebugger2",
+                    ClientUri  = "https://oidcdebugger.com/",
+
+                    AllowedGrantTypes = GrantTypes.Code,
+                    AllowAccessTokensViaBrowser = true,
+                    ClientSecrets = { new Secret("password".Sha256()) },
+                    RequirePkce = true,
 
                     RedirectUris =           { "https://oidcdebugger.com/debug" },
                     PostLogoutRedirectUris = { "https://oidcdebugger.com/debug" },
