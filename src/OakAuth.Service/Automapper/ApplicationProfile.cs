@@ -40,7 +40,7 @@ namespace Applications.Service.Automapper
                 case ApplicationType.Native:
                 case ApplicationType.SinglePageApplication:
                 case ApplicationType.RegularWeb:
-                    return GrantTypes.Hybrid;
+                    return GrantTypes.Code;
                 case ApplicationType.MachineToMachine:
                     return GrantTypes.ClientCredentials;
             }
@@ -56,9 +56,5 @@ namespace Applications.Service.Automapper
         //public static ICollection<string> ResourceOwnerPassword { get; }
         //public static ICollection<string> ResourceOwnerPasswordAndClientCredentials { get; }
         //public static ICollection<string> DeviceFlow { get; }
-
-
-        
-
     }
 }
