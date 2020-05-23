@@ -11,12 +11,13 @@ namespace OakAuth.Service.Utility
     {
         public Application CreateApplication(string clientName, ApplicationType applicationType)
         {
-            var application = new Application { ClientName = clientName };
+            var application = new Application {ClientName = clientName};
             var clientSecret = CryptoRandom.CreateUniqueId();
             application.ClientId = CryptoRandom.CreateUniqueId();
-            application.ClientSecrets = new Collection<Secret> { new Secret(clientSecret.Sha256()) };
-            application.Properties = new Dictionary<string, string> {
-                { "client_secret",  clientSecret}
+            application.ClientSecrets = new Collection<Secret> {new Secret(clientSecret.Sha256())};
+            application.Properties = new Dictionary<string, string>
+            {
+                {"client_secret", clientSecret}
             };
             application.ApplicationType = applicationType;
             application.AllowedScopes = GetAllowedScopes(applicationType);
@@ -26,21 +27,19 @@ namespace OakAuth.Service.Utility
 
         private ICollection<string> GetAllowedScopes(ApplicationType applicationType)
         {
-            if (applicationType == ApplicationType.Native)
+            switch (applicationType)
             {
-                return new List<string>{
-                    IdentityServerConstants.StandardScopes.OpenId,
-                    IdentityServerConstants.StandardScopes.Profile,
-                    IdentityServerConstants.StandardScopes.Email
-                };
-            }
-            if (applicationType == ApplicationType.Native)
-            {
-                return new List<string>{
-                    IdentityServerConstants.StandardScopes.OpenId,
-                    IdentityServerConstants.StandardScopes.Profile,
-                    IdentityServerConstants.StandardScopes.Email
-                };
+                case ApplicationType.Native:
+                case ApplicationType.SinglePageApplication:
+                case ApplicationType.RegularWeb:
+                    return new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email
+                    };
+                case ApplicationType.MachineToMachine:
+                    return new List<string>();
             }
 
             return new List<string>();

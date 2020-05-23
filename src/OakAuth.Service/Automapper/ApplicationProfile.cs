@@ -20,7 +20,6 @@ namespace Applications.Service.Automapper
 
         private bool IsPkceRequired(ApplicationType applicationType)
         {
-
             switch (applicationType)
             {
                 case ApplicationType.Native:
