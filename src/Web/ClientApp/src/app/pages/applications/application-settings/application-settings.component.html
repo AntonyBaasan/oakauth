@@ -1,1 +1,14 @@
-<p>application-settings works!</p>
+
+<form [formGroup]="applicationForm">
+  <label>
+    Client ID:
+    <input type="text" formControlName="clientId"/>
+  </label>
+  <label>
+    Client Name:
+    <input type="text" formControlName="clientName"/>
+  </label>
+</form>
+
+<div>debug</div>
+<pre>{{(applicationDebug$ | async | json)}}</pre>

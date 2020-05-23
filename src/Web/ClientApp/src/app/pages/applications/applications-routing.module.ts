@@ -19,7 +19,7 @@ const routes: Routes = [
         component: ApplicationAddComponent,
       },
       {
-        path: 'settings/:id',
+        path: 'settings/:clientId',
         component: ApplicationSettingsComponent,
       },
     ]
