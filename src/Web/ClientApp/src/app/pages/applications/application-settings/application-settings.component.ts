@@ -34,7 +34,7 @@ export class ApplicationSettingsComponent implements OnInit {
       this.applicationForm = this.fb.group({
         clientId: [application.clientId],
         clientName: [application.clientName],
-        description: [application.clientDescription],
+        description: [application.description],
         clientSecret: [application.properties['client_secret']],
         applicationType: [application.applicationType],
         allowedScopes: [application.allowedScopes],
@@ -63,7 +63,7 @@ export class ApplicationSettingsComponent implements OnInit {
     const patch = compare(this.application, updated);
     console.log(patch);
 
-    this.applicationsService.save().subscribe((savedApplication) => {
+    this.applicationsService.savePatch(this.application.clientId, patch).subscribe((savedApplication) => {
       this.toastsService.show(this.successTemplate, {
         classname: 'bg-success text-light',
         delay: 3000,

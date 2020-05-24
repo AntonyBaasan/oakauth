@@ -37,16 +37,19 @@ namespace Web.Controllers
             return application;
         }
 
-        [HttpPatch]
-        public IActionResult Patch(string clientId, [FromBody] JsonPatchDocument<Application> patchDoc)
+        [HttpPatch("{clientId}")]
+        public async Task<IActionResult> Patch(string clientId, [FromBody] JsonPatchDocument<Application> patchDoc)
         {
             if (patchDoc == null)
             {
                 return BadRequest(ModelState);
             }
 
-            var application = new Application();
+            var application = await _applicationsService.GetApplicationsByIdAsync(clientId);
             patchDoc.ApplyTo(application);
+            
+            //TODO: save partially
+            
 
             return Ok(application);
         }

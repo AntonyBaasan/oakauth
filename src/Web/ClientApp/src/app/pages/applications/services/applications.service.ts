@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Application } from '../models/Application';
 import { ApplicationType } from '../models/ApplicationType';
+import { Operation } from 'fast-json-patch';
 
 @Injectable({
   providedIn: 'root',
@@ -29,5 +30,13 @@ export class ApplicationsService {
 
   save() {
     return this.http.get<Application>(this.backendUrl);
+  }
+
+  savePatch(clientId: string, patch: Operation[]): Observable<Application> {
+    // return this.http.get<Application>(this.backendUrl);
+    return this.http.patch<Application>(
+      this.backendUrl + '/' + clientId,
+      patch
+    );
   }
 }
