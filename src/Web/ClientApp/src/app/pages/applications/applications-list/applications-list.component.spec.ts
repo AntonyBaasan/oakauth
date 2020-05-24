@@ -11,7 +11,7 @@ describe('ApplicationsListComponent', () => {
   let fixture: ComponentFixture<ApplicationsListComponent>;
   const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
   const applicationsServiceStub = {
-    getApplications() { return of([]); }
+    getAll() { return of([]); }
   };
   const activatedRouteSpy = jasmine.createSpyObj('ActivatedRoute', ['']);
 
