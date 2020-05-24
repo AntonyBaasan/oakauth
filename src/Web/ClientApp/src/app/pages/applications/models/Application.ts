@@ -5,7 +5,7 @@ export class Application {
   clientName: string;
   clientSecrets: string[];
   properties: {};
-  clientDescription: string;
+  description: string;
   applicationType: ApplicationType;
   allowedScopes: string[];
 }

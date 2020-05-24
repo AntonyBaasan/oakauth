@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Application } from '../models/Application';
 import { ApplicationType } from '../models/ApplicationType';
 import { ToastsService } from 'src/app/shared/toast/toasts.service';
+import { compare } from 'fast-json-patch';
 
 @Component({
   selector: 'app-application-settings',
@@ -58,11 +59,25 @@ export class ApplicationSettingsComponent implements OnInit {
   }
 
   saveChanges() {
+    const updated = this.getUpdatedApplication();
+    const patch = compare(this.application, updated);
+    console.log(patch);
+
     this.applicationsService.save().subscribe((savedApplication) => {
       this.toastsService.show(this.successTemplate, {
         classname: 'bg-success text-light',
         delay: 3000,
       });
     });
+  }
+
+  private getUpdatedApplication(): any {
+    const partialProperties = {
+      clientName: this.applicationForm.value.clientName,
+      properties: { client_secret: this.applicationForm.value.clientSecret },
+      description: this.applicationForm.value.description,
+    };
+
+    return Object.assign({}, this.application, partialProperties);
   }
 }
