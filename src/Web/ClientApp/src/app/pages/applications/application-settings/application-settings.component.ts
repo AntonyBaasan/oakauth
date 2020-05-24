@@ -61,7 +61,7 @@ export class ApplicationSettingsComponent implements OnInit {
     this.applicationsService.save().subscribe((savedApplication) => {
       this.toastsService.show(this.successTemplate, {
         classname: 'bg-success text-light',
-        delay: 100000,
+        delay: 3000,
       });
     });
   }
