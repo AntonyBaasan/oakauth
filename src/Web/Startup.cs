@@ -37,7 +37,9 @@ namespace Web
 
             AddIdentityServer(services);
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson();
+            
             // In production
             services.AddSpaStaticFiles(configuration =>
             {
