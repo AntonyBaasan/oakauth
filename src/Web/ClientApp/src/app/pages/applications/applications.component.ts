@@ -6,5 +6,5 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApplicationsComponent implements OnInit {
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 }

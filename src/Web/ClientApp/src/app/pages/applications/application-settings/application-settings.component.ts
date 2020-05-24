@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { ApplicationsService } from '../services/applications.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Application } from '../models/Application';
 import { ApplicationType } from '../models/ApplicationType';
+import { ToastsService } from 'src/app/shared/toast/toasts.service';
 
 @Component({
   selector: 'app-application-settings',
@@ -15,11 +16,14 @@ export class ApplicationSettingsComponent implements OnInit {
   applicationDebug$: Observable<Application>;
   applicationForm: FormGroup;
   application: Application;
+  @ViewChild('successTemplate')
+  private successTemplate: TemplateRef<any>;
 
   constructor(
     private applicationsService: ApplicationsService,
     route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastsService: ToastsService
   ) {
     const clientId = route.snapshot.paramMap.get('clientId');
     this.applicationDebug$ = applicationsService.getByClientId(clientId);
@@ -54,9 +58,11 @@ export class ApplicationSettingsComponent implements OnInit {
   }
 
   saveChanges() {
-    this.applicationsService.save()
-    .subscribe(savedApplication=>{
-
+    this.applicationsService.save().subscribe((savedApplication) => {
+      this.toastsService.show(this.successTemplate, {
+        classname: 'bg-success text-light',
+        delay: 100000,
+      });
     });
   }
 }
