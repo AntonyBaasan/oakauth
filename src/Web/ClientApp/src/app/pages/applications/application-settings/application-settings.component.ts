@@ -51,6 +51,5 @@ export class ApplicationSettingsComponent implements OnInit {
       case ApplicationType.MachineToMachine:
         return 'Machine To Machine';
     }
-    return ApplicationType[this.application.applicationType];
   }
 }
