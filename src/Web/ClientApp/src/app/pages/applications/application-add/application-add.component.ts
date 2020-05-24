@@ -34,7 +34,7 @@ export class ApplicationAddComponent implements OnInit {
   create() {
     const name = this.applicationForm.value.applicationName;
     this.applicationsService
-      .createApplication(name, this.applicationType)
+      .create(name, this.applicationType)
       .pipe(
         finalize(() => {
           this.router.navigate(['applications']);

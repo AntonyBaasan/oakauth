@@ -14,7 +14,7 @@ export class ApplicationsListComponent implements OnInit {
   applications$: Observable<Array<Application>>;
 
   constructor(applicationsService: ApplicationsService, private router: Router, private route: ActivatedRoute) {
-    this.applications$ = applicationsService.getApplications();
+    this.applications$ = applicationsService.getAll();
   }
 
   ngOnInit() { }

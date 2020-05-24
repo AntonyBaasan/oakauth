@@ -17,13 +17,13 @@ export class ApplicationSettingsComponent implements OnInit {
   application: Application;
 
   constructor(
-    applicationsService: ApplicationsService,
+    private applicationsService: ApplicationsService,
     route: ActivatedRoute,
     private fb: FormBuilder
   ) {
     const clientId = route.snapshot.paramMap.get('clientId');
-    this.applicationDebug$ = applicationsService.getApplication(clientId);
-    applicationsService.getApplication(clientId).subscribe((application) => {
+    this.applicationDebug$ = applicationsService.getByClientId(clientId);
+    applicationsService.getByClientId(clientId).subscribe((application) => {
       this.application = application;
 
       this.applicationForm = this.fb.group({
@@ -51,5 +51,12 @@ export class ApplicationSettingsComponent implements OnInit {
       case ApplicationType.MachineToMachine:
         return 'Machine To Machine';
     }
+  }
+
+  saveChanges() {
+    this.applicationsService.save()
+    .subscribe(savedApplication=>{
+
+    });
   }
 }

@@ -12,18 +12,22 @@ export class ApplicationsService {
 
   constructor(private http: HttpClient) {}
 
-  getApplications(): Observable<Array<Application>> {
+  getAll(): Observable<Array<Application>> {
     return this.http.get<Array<Application>>(this.backendUrl);
   }
 
-  getApplication(clientId: string): Observable<Application> {
+  getByClientId(clientId: string): Observable<Application> {
     return this.http.get<Application>(this.backendUrl + '/' + clientId);
   }
 
-  createApplication(name: string, applicationType: ApplicationType) {
+  create(name: string, applicationType: ApplicationType) {
     return this.http.post<Application>(this.backendUrl, {
       clientName: name,
       applicationType: applicationType,
     });
+  }
+
+  save() {
+    return this.http.get<Application>(this.backendUrl);
   }
 }
