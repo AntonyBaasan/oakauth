@@ -53,6 +53,7 @@ namespace OakAuth.Service
             var client = is4Context.Clients
                 .Where(c => c.ClientId.Equals(clientId))
                 .Include(c => c.Properties)
+                .Include(c => c.AllowedScopes)
                 .FirstOrDefault();
             return Task.FromResult(mapper.Map<Client, Application>(client.ToModel()));
         }
