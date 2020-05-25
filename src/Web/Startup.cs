@@ -33,7 +33,7 @@ namespace Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(ApplicationProfile).Assembly);
-            services.AddScoped<IApplicationsService, ApplicatonsService>();
+            services.AddScoped<IApplicationsService, ApplicationsService>();
 
             AddIdentityServer(services);
 

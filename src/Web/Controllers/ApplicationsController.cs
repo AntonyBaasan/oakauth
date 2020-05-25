@@ -48,10 +48,8 @@ namespace Web.Controllers
             var application = await _applicationsService.GetApplicationsByIdAsync(clientId);
             patchDoc.ApplyTo(application);
             
-            //TODO: save partially
-            
-
-            return Ok(application);
+            var updatedApplication = await _applicationsService.Update(clientId, application);
+            return Ok(updatedApplication);
         }
     }
 }

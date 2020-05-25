@@ -8,5 +8,6 @@ namespace OakAuth.Interfaces.Applications
         Task<Application> CreateApplicationAsync(Application application);
         Task<List<Application>> GetApplicationsAsync();
         Task<Application> GetApplicationsByIdAsync(string clientId);
+        Task<Application> Update(string clientId, Application application);
     }
 }
