@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OakAuth.Interfaces", "src\O
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OakAuth.Service", "src\OakAuth.Service\OakAuth.Service.csproj", "{2240019F-11B1-4152-B14D-1A63E0881A24}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OakAuth.IntegrationTests", "test\OakAuth.IntegrationTests\OakAuth.IntegrationTests.csproj", "{58398086-0159-4A81-90F4-B09CF206E9B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{2240019F-11B1-4152-B14D-1A63E0881A24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2240019F-11B1-4152-B14D-1A63E0881A24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2240019F-11B1-4152-B14D-1A63E0881A24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58398086-0159-4A81-90F4-B09CF206E9B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58398086-0159-4A81-90F4-B09CF206E9B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58398086-0159-4A81-90F4-B09CF206E9B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58398086-0159-4A81-90F4-B09CF206E9B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{2B4287AE-FCC2-4167-BCAE-8ED7A82A5E6B} = {28219C84-F8BE-4F58-B13F-23C096176D93}
 		{4557EF65-9089-4163-B645-62FDD2BE2889} = {520C1C0C-4A14-4293-9A10-52F41DEDBE72}
 		{2240019F-11B1-4152-B14D-1A63E0881A24} = {520C1C0C-4A14-4293-9A10-52F41DEDBE72}
+		{58398086-0159-4A81-90F4-B09CF206E9B7} = {28219C84-F8BE-4F58-B13F-23C096176D93}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7C123C26-10AC-47EA-B943-4B87C607E025}
