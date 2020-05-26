@@ -24,11 +24,12 @@ namespace OakAuth.IntegrationTests
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(ApplicationProfile).Assembly);
-            services.AddScoped<IApplicationsService, ApplicatonsService>();
+            services.AddScoped<IApplicationsService, ApplicationsService>();
 
             AddIdentityServer(services);
 
             services.AddControllersWithViews()
+                .AddApplicationPart(typeof(Startup).Assembly)
                 .AddNewtonsoftJson();
         }
 
@@ -78,43 +79,43 @@ namespace OakAuth.IntegrationTests
 
         private void InitializeDatabase(IApplicationBuilder app)
         {
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                // migrate PersistedGrantDbContext
-                serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
+            //using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            //{
+            //    // migrate PersistedGrantDbContext
+            //    serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
 
-                // migrate ConfigurationDbContext
-                var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
-                context.Database.Migrate();
+            //    // migrate ConfigurationDbContext
+            //    var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
+            //    context.Database.Migrate();
 
-                // insert seed data
-                if (!context.Clients.Any())
-                {
-                    foreach (var client in Config.Clients)
-                    {
-                        context.Clients.Add(client.ToEntity());
-                    }
-                    context.SaveChanges();
-                }
+            //    // insert seed data
+            //    if (!context.Clients.Any())
+            //    {
+            //        foreach (var client in Config.Clients)
+            //        {
+            //            context.Clients.Add(client.ToEntity());
+            //        }
+            //        context.SaveChanges();
+            //    }
 
-                if (!context.IdentityResources.Any())
-                {
-                    foreach (var resource in Config.GetResources())
-                    {
-                        context.IdentityResources.Add(resource.ToEntity());
-                    }
-                    context.SaveChanges();
-                }
+            //    if (!context.IdentityResources.Any())
+            //    {
+            //        foreach (var resource in Config.GetResources())
+            //        {
+            //            context.IdentityResources.Add(resource.ToEntity());
+            //        }
+            //        context.SaveChanges();
+            //    }
 
-                if (!context.ApiResources.Any())
-                {
-                    foreach (var resource in Config.Apis)
-                    {
-                        context.ApiResources.Add(resource.ToEntity());
-                    }
-                    context.SaveChanges();
-                }
-            }
+            //    if (!context.ApiResources.Any())
+            //    {
+            //        foreach (var resource in Config.Apis)
+            //        {
+            //            context.ApiResources.Add(resource.ToEntity());
+            //        }
+            //        context.SaveChanges();
+            //    }
+            //}
         }
 
     }
