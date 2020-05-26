@@ -13,6 +13,7 @@ trigger:
       - test
     exclude:
       - src/Web/ClientApp
+      - test/OakAuth.IntegrationTests
 
 pool:
   vmImage: 'ubuntu-latest'
