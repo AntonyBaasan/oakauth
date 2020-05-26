@@ -1,20 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
 using System.Net.Http;
-using Web;
 using Xunit;
 
 namespace OakAuth.IntegrationTests
 {
-    public abstract class BaseIntegrationTests: IClassFixture<CustomWebApplicationFactory>
+    public abstract class BaseIntegrationTests: IClassFixture<CustomWEbApplicationFactory>
     {
-        protected readonly CustomWebApplicationFactory _factory;
+        protected readonly CustomWEbApplicationFactory _factory;
         protected readonly HttpClient _client;
         protected readonly IConfigurationRoot _configuration;
 
-        public BaseIntegrationTests(CustomWebApplicationFactory factory)
+        public BaseIntegrationTests(CustomWEbApplicationFactory factory)
         {
             _factory = factory;
             _client = factory.CreateClient();

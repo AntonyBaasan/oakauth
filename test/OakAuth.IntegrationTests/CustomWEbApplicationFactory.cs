@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace OakAuth.IntegrationTests
 {
-    public class CustomWebApplicationFactory : WebApplicationFactory<TestStartup>
+    public class CustomWEbApplicationFactory : WebApplicationFactory<TestStartup>
     {
         protected override IWebHostBuilder CreateWebHostBuilder()
         {

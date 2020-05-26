@@ -11,7 +11,7 @@ namespace OakAuth.IntegrationTests.Controller
 {
     public class ApplicationControllerIntegrationTests : BaseIntegrationTests
     {
-        public ApplicationControllerIntegrationTests(CustomWebApplicationFactory factory ) : base(factory)
+        public ApplicationControllerIntegrationTests(CustomWEbApplicationFactory factory ) : base(factory)
         {
             SetupData();
         }
