@@ -41,5 +41,5 @@ steps:
   displayName: 'unit tests'
   inputs:
     command: 'test'
-    projects: 'test/OakAuth.UnitTests'
+    projects: 'test/OakAuth.UnitTests/OakAuth.UnitTests.csproj'
 
