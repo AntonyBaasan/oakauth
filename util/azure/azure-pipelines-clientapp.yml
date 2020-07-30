@@ -39,5 +39,5 @@ steps:
 - task: CmdLine@2
   displayName: npm test
   inputs:
-    script: 'npm run test-headless'
+    script: 'npm run test_headless'
     workingDirectory: 'src/Web/ClientApp'
