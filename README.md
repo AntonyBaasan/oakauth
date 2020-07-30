@@ -20,8 +20,10 @@ dotnet build
 ```
 # unit tests
 dotnet test test/OakAuth.UnitTests
+
 # integration tests
-dotnet test test/OakAuth.UnitTests
+dotnet test test/OakAuth.IntegrationTests
+
 # all tests
 dotnet test
 ```
