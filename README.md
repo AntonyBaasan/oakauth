@@ -28,11 +28,9 @@ dotnet test
 ### Client commands
 ```
 cd src/Web/ClientApp
-# lint
 npm run lint
-# test
 npm run test
-# build
+npm run test_headless
 npm run build
 ```
 
