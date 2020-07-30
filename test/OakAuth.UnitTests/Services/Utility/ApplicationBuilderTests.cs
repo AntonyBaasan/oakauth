@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OakAuth.Interfaces.Applications;
+using OakAuth.Models.Applications;
 using OakAuth.Service.Utility;
 
 namespace OakAuth.UnitTests.Services.Utility

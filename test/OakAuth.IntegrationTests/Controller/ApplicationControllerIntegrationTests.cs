@@ -5,6 +5,7 @@ using OakAuth.Interfaces.Applications;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using OakAuth.Models.Applications;
 using Xunit;
 
 namespace OakAuth.IntegrationTests.Controller

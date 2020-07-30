@@ -1,6 +1,7 @@
 ﻿using IdentityModel;
 using IdentityServer4.Models;
 using OakAuth.Interfaces.Applications;
+using OakAuth.Models.Applications;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using IdentityServer4;

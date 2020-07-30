@@ -1,4 +1,4 @@
-﻿namespace OakAuth.Interfaces.Applications
+﻿namespace OakAuth.Models.Applications
 {
     public enum ApplicationType
     {

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using OakAuth.Models.Applications;
 
 namespace OakAuth.Interfaces.Applications
 {

@@ -11,4 +11,8 @@
     <PackageReference Include="IdentityServer4.Storage" Version="3.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OakAuth.Models\OakAuth.Models.csproj" />
+  </ItemGroup>
+
 </Project>

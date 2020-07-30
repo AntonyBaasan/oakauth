@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using OakAuth.Interfaces.Applications;
 using OakAuth.Service.Utility;
+using OakAuth.Models.Applications;
 
 namespace OakAuth.Service
 {
