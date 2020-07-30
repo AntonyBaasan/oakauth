@@ -41,7 +41,7 @@ npm run build
 
 ### Run as development
 
-Runs server code. This runs server application on the http://localhost:5000 and https://localhost:5001 address.
+This runs server application on the http://localhost:5000 and https://localhost:5001 address.
 
 ```
 dotnet run --project src/Web/Web.csproj
