@@ -17,6 +17,7 @@ dotnet build
 ```
 
 ### Server tests
+
 ```
 # unit tests
 dotnet test test/OakAuth.UnitTests
@@ -27,7 +28,9 @@ dotnet test test/OakAuth.IntegrationTests
 # all tests
 dotnet test
 ```
+
 ### Client commands
+
 ```
 cd src/Web/ClientApp
 npm run lint
@@ -36,3 +39,17 @@ npm run test_headless
 npm run build
 ```
 
+### Run as development
+
+Runs server code. This runs server application on the http://localhost:5000 and https://localhost:5001 address.
+
+```
+dotnet run --project src/Web/Web.csproj
+```
+
+Runs Angular single page application on the http://localhost:4200 address.
+
+```
+cd src/Web/ClientApp
+npm start
+```
