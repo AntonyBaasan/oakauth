@@ -7,3 +7,32 @@ OakAuth.Dotnet: [![Build Status](https://antonybaasan.visualstudio.com/OakAuth/_
 OakAuth.ClientApp: [![Build Status](https://antonybaasan.visualstudio.com/OakAuth/_apis/build/status/OakAuth.ClientApp?branchName=master)](https://antonybaasan.visualstudio.com/OakAuth/_build/latest?definitionId=3&branchName=master)
 
 OakAuth.DeployToAzure: [![Build Status](https://antonybaasan.visualstudio.com/OakAuth/_apis/build/status/OakAuth.DeployToAzure?branchName=master)](https://antonybaasan.visualstudio.com/OakAuth/_build/latest?definitionId=4&branchName=master)
+
+## Getting Started
+
+### Server build
+
+```
+dotnet build
+```
+
+### Server tests
+```
+# unit tests
+dotnet test test/OakAuth.UnitTests
+# integration tests
+dotnet test test/OakAuth.UnitTests
+# all tests
+dotnet test
+```
+### Client commands
+```
+cd src/Web/ClientApp
+# lint
+npm run lint
+# test
+npm run test
+# build
+npm run build
+```
+
